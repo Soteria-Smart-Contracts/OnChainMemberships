@@ -135,7 +135,7 @@ contract LiquidSubscription {
         uint256 Value = MembershipTypes[Subscriptions[SubscriptionID].MembershipType].BasePrice * WeeksEquivalent;
         Value = Value - (Value * DiscountAppliedOnPurchase / 10000);
 
-        //because the discount is applied to the number of weeks and not to the value, we need to convert the value back into weeks
+        //because the discount is applied to the number of weeks and not to the value, we need to find a way to convert the value directly into the new tier
 
         uint256 Discount = GetDiscountEligibility(Weeks);
         // if the discount is not 0, increase the value by the discount amount
