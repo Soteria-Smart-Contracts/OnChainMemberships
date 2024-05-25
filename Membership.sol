@@ -52,12 +52,6 @@ contract LiquidSubscription {
         _;
     }
 
-    enum Lengths{
-        Month,
-        ThreeMonth,
-        Year
-    }
-
     struct MembershipType{
         string MembershipTypeName;
         string MembershipBenefits;
