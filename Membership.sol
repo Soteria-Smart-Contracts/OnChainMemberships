@@ -69,7 +69,7 @@ contract LiquidSubscription {
         MembershipTypes MembershipType;
         uint256 SubscriptionStart;
         uint256 SubscriptionExpiry; 
-        uint256 TotalElapsed
+        uint256 TotalWeeksElapsed;
 
     }
 
