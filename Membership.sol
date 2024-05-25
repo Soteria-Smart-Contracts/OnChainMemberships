@@ -1,7 +1,18 @@
 //SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.24;
 
-contract LiquidSubscriptionFactory
+contract LiquidSubscriptionFactory{
+    address[] public DeployedSubscriptions;
+
+    function CreateSubscription(string _MembershipName, string _MembershipTicker, MembershipType[] memory _MembershipTypes, uint256[] _DiscountSteps) public{
+        address newSubscription = address(new LiquidSubscription(_MembershipName, _MembershipTicker, _MembershipTypes, _DiscountSteps));
+        DeployedSubscriptions.push(newSubscription);
+    }
+
+    function GetDeployedSubscriptions() public view returns(address[] memory){
+        return DeployedSubscriptions;
+    }
+}
 
 contract LiquidSubscription {
     string public MembershipName;
