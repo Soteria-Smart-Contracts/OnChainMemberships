@@ -155,11 +155,6 @@ contract LiquidSubscription {
     }
 
 
-    //change type of subscription
-    function ChangeSubscriptionType(uint256 SubscriptionID, MembershipTypes _MembershipType) public OnlyManager{ //TODO:
-        Subscriptions[SubscriptionID].MembershipType = _MembershipType;
-    }
-
     //Only manager functions
 
     //allow manager to change the price, benefits and name of a membership type, as well as add new membership types
