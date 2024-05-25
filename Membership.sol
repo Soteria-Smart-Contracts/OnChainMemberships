@@ -73,7 +73,7 @@ contract LiquidSubscription {
         uint256 TotalWeeksSubscribed;
     }
 
-    function PurchaseSubscription(MembershipTypes _MembershipType, uint256 Weeks) public payable returns(uint256 NewSubscriptionTokenID){ //TODO:
+    function PurchaseSubscription(MembershipTypes _MembershipType, uint256 Weeks) public payable returns(uint256 NewSubscriptionTokenID, bool success){ //TODO:
         require(MembershipTypes[_MembershipType] <= HighestTypeInt, "Membership type is too high");
 
         //calculate the time the subscription will expire as well as its cost using the membership type and the amount of weeks (with discount if applicable)
