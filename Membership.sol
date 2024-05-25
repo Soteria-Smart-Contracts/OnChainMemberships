@@ -96,6 +96,7 @@ contract LiquidSubscription {
 
         //mint the NFT to the user, get the ID and add the subscription to the mapping
         uint256 TokenID = MembershipToken.Mint(msg.sender);
+        
     }
 
     function RenewSubscription(uint256 SubscriptionID, uint256 Weeks) public payable{
