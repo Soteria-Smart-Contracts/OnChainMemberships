@@ -93,6 +93,8 @@ contract LiquidSubscription {
             SubscriptionExpiry: TimeBought,
             TotalWeeksSubscribed: += Weeks
         });
+
+        //mint the NFT to the user, get
     }
 
     function RenewSubscription(uint256 SubscriptionID, uint256 Weeks) public payable{
