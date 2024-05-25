@@ -95,8 +95,7 @@ contract LiquidSubscription {
         MembershipTypes[_MembershipType].MembershipBenefits = _NewBenefits;
     }
 
-    //View Functions
-
+    //View Functions\
 
     function GetMembershipTypes() public view returns(MembershipType[] memory){
         MembershipType[] memory _MembershipTypes = new MembershipType[](MembershipTypes.length);
