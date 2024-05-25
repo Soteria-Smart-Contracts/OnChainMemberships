@@ -120,7 +120,7 @@ contract LiquidSubscription {
             }
         }
         else{
-            return DiscountSteps[0];
+            return DiscountSteps[0].discountPercentage;
         }
 
     }
