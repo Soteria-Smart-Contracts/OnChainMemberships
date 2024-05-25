@@ -77,6 +77,12 @@ contract LiquidSubscription {
         });
     }
 
+    function RenewSubscription(uint256 SubscriptionID, MembershipLengths _MembershipLength) public payable{
+        require(msg.value == MembershipLengthPrices[_MembershipLength], "Incorrect amount sent");
+    }
+
+    //
+
     //Only manager functions
 
     //allow manager to change the price, benefits and name of a membership type, as well as add new membership types
@@ -88,9 +94,6 @@ contract LiquidSubscription {
 
     //View Functions
 
-    function RenewSubscription(uint256 SubscriptionID, MembershipLengths _MembershipLength) public payable{
-        require(msg.value == MembershipLengthPrices[_MembershipLength], "Incorrect amount sent");
-    }
 
     function GetMembershipTypes() public view returns(MembershipType[] memory){
         MembershipType[] memory _MembershipTypes = new MembershipType[](MembershipTypes.length);
