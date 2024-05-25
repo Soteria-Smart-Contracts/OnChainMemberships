@@ -83,7 +83,7 @@ contract LiquidSubscription {
         Price = Price - (Price * Discount / 10000);
         require(msg.value >= Price, "Incorrect amount sent");
 
-        uint256 NewExp
+        uint256 NewExpiry 
         
 
         SubsctiptionInfo memory _SubscriptionInfo = SubsctiptionInfo({
