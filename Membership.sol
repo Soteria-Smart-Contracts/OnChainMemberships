@@ -75,6 +75,10 @@ contract LiquidSubscriptions {
 
 }
 
+contract MembershipMarketplace{
+    
+}
+
 
 
 library Strings {
