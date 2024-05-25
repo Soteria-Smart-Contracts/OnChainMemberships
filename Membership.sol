@@ -68,7 +68,6 @@ contract LiquidSubscription {
         address LastPurchaser;
         MembershipTypes MembershipType;
         uint8 DiscountPercentage;
-        uint256 SubscriptionStart;
         uint256 SubscriptionExpiry; 
         uint256 TotalWeeksSubscribed;
     }
@@ -105,7 +104,7 @@ contract LiquidSubscription {
         require(msg.value >= Price, "Incorrect amount sent");
 
         Subscriptions[SubscriptionID].LastPurchaser = msg.sender;
-        
+
         Subscriptions[SubscriptionID].SubscriptionExpiry += (Weeks * WeekUnix);
         Subscriptions[SubscriptionID].TotalWeeksSubscribed += Weeks;
     }
