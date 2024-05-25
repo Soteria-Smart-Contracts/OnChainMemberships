@@ -107,7 +107,7 @@ contract LiquidSubscription {
         Subscriptions[SubscriptionID].TotalWeeksSubscribed += Weeks;
     }
 
-    //convert subscription to another tier by calculating the price difference and adding the weeks to the subscriptio
+    //convert subscription to another tier by calculating the new exp
 
     //renew and switch type
 
