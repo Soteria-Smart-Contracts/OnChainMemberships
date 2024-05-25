@@ -74,7 +74,9 @@ contract LiquidSubscription {
 
     function PurchaseSubscription(MembershipTypes _MembershipType, uint256 Weeks) public payable{ //TODO:
         require(msg.value == MembershipLengthPrices[_MembershipLength], "Incorrect amount sent");
+        require(MembershipTypes[_MembershipType] <= HighestTypeInt, "Membership type is too high");
 
+        
 
 
         SubsctiptionInfo memory _SubscriptionInfo = SubsctiptionInfo({
