@@ -72,7 +72,7 @@ contract LiquidSubscription {
 
     }
 
-    function PurchaseSubscription(MembershipTypes _MembershipType, uint256 Weeks) public payable{
+    function PurchaseSubscription(MembershipTypes _MembershipType, uint256 Weeks) public payable{ //TODO:
         require(msg.value == MembershipLengthPrices[_MembershipLength], "Incorrect amount sent");
 
 
@@ -90,14 +90,14 @@ contract LiquidSubscription {
     }
 
     //change type of subscription
-    function ChangeSubscriptionType(uint256 SubscriptionID, MembershipTypes _MembershipType) public OnlyManager{
+    function ChangeSubscriptionType(uint256 SubscriptionID, MembershipTypes _MembershipType) public OnlyManager{ //TODO:
         Subscriptions[SubscriptionID].MembershipType = _MembershipType;
     }
 
     //Only manager functions
 
     //allow manager to change the price, benefits and name of a membership type, as well as add new membership types
-    function UpdateMembershipType(MembershipType _MembershipType, uint256 _NewPrice, string _NewBenefits) public OnlyManager{
+    function UpdateMembershipType(MembershipType _MembershipType, uint256 _NewPrice, string _NewBenefits) public OnlyManager{ //TODO:
         require(MembershipTypes[_MembershipType] < HighestTypeInt, "Membership type is too high");
         MembershipTypes[_MembershipType].BasePrice = _NewPrice;
         MembershipTypes[_MembershipType].MembershipBenefits = _NewBenefits;
