@@ -106,8 +106,13 @@ contract LiquidSubscription {
         //see if the discount step 0 minimum is less than the time bought
         if(DiscountSteps[0].MinimumTime < Timebought){
             return DiscountSteps[0];
+        }else{
+            for(uint256 i = 1; i < DiscountSteps.length; i++){
+                if(DiscountSteps[i].MinimumTime < Timebought){
+                    return DiscountSteps[i];
+                }
+            }
         }
-        
     }
 
     function GetMembershipTypes() public view returns(MembershipType[] memory){
