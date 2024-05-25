@@ -97,6 +97,8 @@ contract LiquidSubscription {
 
         Subscriptions[TokenID] = _SubscriptionInfo;
 
+        TotalSubscriptions++;
+
     }
 
     function RenewSubscription(uint256 SubscriptionID, uint256 Weeks) public payable{
