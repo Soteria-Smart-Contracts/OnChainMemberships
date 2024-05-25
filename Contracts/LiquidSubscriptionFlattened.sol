@@ -83,15 +83,10 @@ contract LiquidSubscription {
         require(MembershipTypes[_MembershipType] <= HighestTypeInt, "Membership type is too high");
         require(Weeks >= 1, "Weeks must be greater than or equal to 1");
 
-        //calculate the time the subscription will expire as well as its cost using the membership type and the amount of weeks (with discount if applicable)
         uint256 BaseWeeks = EtherAmount / MembershipTypes[_MembershipType].BasePrice;
         uint256 Discount = GetDiscountEligibility(BaseWeeks);
-
-        //calculate the number  of extra weeks based on the discount
         uint256 ExtraWeeks = BaseWeeks * Discount / 10000;
-
-        //calculate the total amount of weeks
-        uint256 Weeks = BaseWeeks + ExtraWeeks;
+        uint256 TotalWeeks = BaseWeeks + ExtraWeeks;
 
         uint256 TokenID = MembershipToken.Mint(msg.sender);
 
