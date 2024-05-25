@@ -1477,7 +1477,6 @@ contract StandardERC721 is ERC721Enumerable{
       else{
         UnMinted[RandomNumber] = UnMinted[MaxUnMinted];
         --MaxUnMinted;
-        return(success, RandomNumber);
       }
     }
     else{
@@ -1485,6 +1484,7 @@ contract StandardERC721 is ERC721Enumerable{
       if(UnMinted[MaxUnMinted] == 0){
       UnMinted[RandomNumber] = MaxUnMinted;
       --MaxUnMinted;
+        return(success, RandomNumber);
       }
       else{
         UnMinted[RandomNumber] = UnMinted[MaxUnMinted];
