@@ -1454,7 +1454,7 @@ contract StandardERC721 is ERC721Enumerable{
 
   }
 
-  function RandomMint(address to) internal returns(bool success){
+  function RandomMint(address to) internal returns(bool success, uint256 ID){
     uint256 RandomNumber = _generateRandom(MaxUnMinted);
 
     if(RandomNumber == 0){
