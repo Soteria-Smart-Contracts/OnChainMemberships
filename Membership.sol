@@ -105,6 +105,7 @@ contract LiquidSubscription {
         require(msg.value >= Price, "Incorrect amount sent");
 
         Subscriptions[SubscriptionID].LastPurchaser = msg.sender;
+        
         Subscriptions[SubscriptionID].SubscriptionExpiry += (Weeks * WeekUnix);
         Subscriptions[SubscriptionID].TotalWeeksSubscribed += Weeks;
     }
