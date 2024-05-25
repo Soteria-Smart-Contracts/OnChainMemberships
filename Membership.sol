@@ -106,7 +106,7 @@ contract LiquidSubscription {
         //see if the discount step 0 minimum is less than the time bought, if it is, return the discount step for the appropriate time
         if(DiscountSteps[0].MinimumTime <= Timebought){
             for(uint256 i = 0; i < DiscountSteps.length; i++){
-                if(DiscountSteps[i].MinimumTime <= Timebought){
+                if(DiscountSteps[i].MinimumTime >= Timebought){
                     return DiscountSteps[i];
                 }
             }
