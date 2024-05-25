@@ -94,10 +94,12 @@ contract LiquidSubscription {
 
     function RenewSubscription(uint256 SubscriptionID, MembershipLengths _MembershipLength) public payable{ //TODO:
         require(msg.value == MembershipLengthPrices[_MembershipLength], "Incorrect amount sent");
+
+        
     }
 
     //renew and switch type
-    
+
 
     //change type of subscription
     function ChangeSubscriptionType(uint256 SubscriptionID, MembershipTypes _MembershipType) public OnlyManager{ //TODO:
