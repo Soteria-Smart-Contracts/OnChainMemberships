@@ -73,7 +73,6 @@ contract LiquidSubscription {
     }
 
     function PurchaseSubscription(MembershipTypes _MembershipType, uint256 Weeks) public payable{ //TODO:
-        require(msg.value == MembershipLengthPrices[_MembershipLength], "Incorrect amount sent");
         require(MembershipTypes[_MembershipType] <= HighestTypeInt, "Membership type is too high");
 
         //calculate the time the subscription will expire as well as its cost using the membership type and the amount of weeks (with discount if applicable)
@@ -81,6 +80,7 @@ contract LiquidSubscription {
         uint256 Discount = GetDiscountEligibility(TimeBought);
 
         uint256 Price = MembershipTypes[_MembershipType].BasePrice * Weeks;
+        require(msg.value == Price, "Incorrect amount sent");
         uint256 DiscountedPrice = Price - (Price * Discount / 10000);
         
 
@@ -95,7 +95,7 @@ contract LiquidSubscription {
     function RenewSubscription(uint256 SubscriptionID, MembershipLengths _MembershipLength) public payable{ //TODO:
         require(msg.value == MembershipLengthPrices[_MembershipLength], "Incorrect amount sent");
 
-        
+
     }
 
     //renew and switch type
