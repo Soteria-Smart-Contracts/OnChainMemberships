@@ -143,8 +143,6 @@ contract LiquidSubscription {
             Value = Value + (Value * Discount / 10000);
         }
 
-
-        
         Subscriptions[SubscriptionID].LastPurchaser = msg.sender;
         Subscriptions[SubscriptionID].MembershipType = _MembershipType;
         Subscriptions[SubscriptionID].SubscriptionExpiry += (Weeks * WeekUnix);
