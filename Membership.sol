@@ -103,7 +103,7 @@ contract LiquidSubscription {
         return TokenID;
     }
 
-    function RenewSubscription(uint256 SubscriptionID, uint256 Weeks) public payable{
+    function RenewSubscription(uint256 SubscriptionID, uint256 Weeks) public payable returns(bool success){
         require(Subscriptions[SubscriptionID].SubscriptionExpiry < block.timestamp, "Subscription has not expired yet");
 
         uint256 Discount = GetDiscountEligibility(Weeks);
