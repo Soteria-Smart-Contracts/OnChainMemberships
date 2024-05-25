@@ -99,7 +99,8 @@ contract LiquidSubscription {
 
         TotalSubscriptions++;
         TotalSubscriptionsRevenue += Price;
-        
+
+        return TokenID;
     }
 
     function RenewSubscription(uint256 SubscriptionID, uint256 Weeks) public payable{
