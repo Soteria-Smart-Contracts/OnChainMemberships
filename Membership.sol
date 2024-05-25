@@ -102,8 +102,8 @@ contract LiquidSubscription {
     //View Functions
 
     //function get minimum time for discount
-    function GetDiscountStep(uint256 _DiscountStep) public view returns(DiscountStep memory){
-        return DiscountSteps[_DiscountStep];
+    function GetMinimumForDiscount() public view returns(DiscountStep memory){
+        return DiscountSteps[0];
     }
 
     function GetMembershipTypes() public view returns(MembershipType[] memory){
