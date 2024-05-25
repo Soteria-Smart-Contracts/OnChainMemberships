@@ -74,7 +74,7 @@ contract LiquidSubscription {
     }
 
     function PurchaseSubscription(MembershipTypes _MembershipType) public payable returns(uint256 NewSubscriptionTokenID, bool success){
-        
+        EtherAmount = msg.value;
         require(MembershipTypes[_MembershipType] <= HighestTypeInt, "Membership type is too high");
         require(Weeks > 0, "Weeks must be greater than 0");
 
