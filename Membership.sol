@@ -107,7 +107,7 @@ contract LiquidSubscription {
         if(DiscountSteps[0].MinimumTime <= Timebought){
             for(uint256 i = 0; i < DiscountSteps.length; i++){
                 if(DiscountSteps[i].MinimumTime >= Timebought){
-                    return DiscountSteps[i];
+                    return DiscountSteps[i - 1];
                 }
             }
         }
