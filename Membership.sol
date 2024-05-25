@@ -1,9 +1,9 @@
 //SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.24;
 
-contract 
+contract LiquidSubscriptionFactory
 
-contract LiquidSubscriptions {
+contract LiquidSubscription {
     string public MembershipName;
     string public MembershipTicker;
     uint256 public TotalSubscriptions;
