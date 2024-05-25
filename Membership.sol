@@ -115,12 +115,12 @@ contract LiquidSubscription {
         if(DiscountSteps[0].MinimumTime <= Timebought){
             for(uint256 i = 0; i < DiscountSteps.length; i++){
                 if(DiscountSteps[i].MinimumTime >= Timebought){
-                    return DiscountSteps[i - 1];
+                    return DiscountSteps[i - 1].
                 }
             }
         }
         else{
-            return DiscountSteps[0].DiscountPercentage;
+            return 0;
         }
 
     }
