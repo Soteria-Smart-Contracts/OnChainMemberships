@@ -93,7 +93,7 @@ contract LiquidSubscription {
         });
     }
 
-    function RenewSubscription(uint256 SubscriptionID, uint256 Weeks) public payable{ //TODO:
+    function RenewSubscription(uint256 SubscriptionID, uint256 Weeks) public payable{
         require(Subscriptions[SubscriptionID].SubscriptionExpiry < block.timestamp, "Subscription has not expired yet");
 
         uint256 Discount = GetDiscountEligibility(Weeks);
@@ -108,7 +108,7 @@ contract LiquidSubscription {
     }
 
     //convert subscription to another tier by calculating the new expirty date by getting the time left, unconverting it back into ether value and then converting it back into the new tier
-    function ConvertSubscription(uint256 SubscriptionID, MembershipTypes _MembershipType) public payable{ //TODO:
+    function ConvertSubscription(uint256 SubscriptionID, MembershipTypes _MembershipType) public payable{
         require(Subscriptions[SubscriptionID].SubscriptionExpiry < block.timestamp, "Subscription has not expired yet");
         require(MembershipTypes[_MembershipType] <= HighestTypeInt, "Membership type is too high");
 
