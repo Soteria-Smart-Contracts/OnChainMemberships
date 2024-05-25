@@ -21,7 +21,7 @@ contract LiquidSubscription {
     uint256 public TotalSubscriptions;
     uint256 public TotalSubscriptionsRevenue;
     StandardERC721 public MembershipToken;
-    uint256 internal 
+    uint256 internal HighestTypeInt;
 
     mapping(uint256 => uint256) public SubsciptionStart;
     mapping(uint256 => SubsctiptionInfo) public Subscriptions;
