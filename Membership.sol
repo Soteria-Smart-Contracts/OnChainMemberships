@@ -79,6 +79,8 @@ contract LiquidSubscription {
 
     //Only manager functions
 
+    //
+
     //View Functions
 
     function RenewSubscription(uint256 SubscriptionID, MembershipLengths _MembershipLength) public payable{
