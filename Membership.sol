@@ -1426,6 +1426,7 @@ contract StandardERC721 is ERC721Enumerable{
   function mint() public payable {
     uint256 supply = totalSupply();
     require(_mintQuantity == 1);
+    uint256 ID;
 
     for (uint256 i = 1; i <= _mintQuantity; i++) {
       RandomMint(msg.sender);
