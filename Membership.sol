@@ -59,7 +59,7 @@ contract LiquidSubscription {
         uint256 BasePrice;
     }
 
-    struct LinearDiscount
+    struct DiscountStep
 
     struct SubsctiptionInfo{
         address LastPurchaser;
