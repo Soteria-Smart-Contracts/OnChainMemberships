@@ -89,6 +89,7 @@ contract LiquidSubscription {
             LastPurchaser: msg.sender,
             LastPurchase: block.timestamp,
             MembershipType: _MembershipType,
+            DiscountPercentage: Discount,
             SubscriptionExpiry: TimeBought,
             TotalWeeksSubscribed: += Weeks
         });
