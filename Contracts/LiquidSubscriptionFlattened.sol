@@ -52,7 +52,6 @@ contract LiquidSubscription {
 
         HighestTypeInt = _MembershipTypes.length - 1;
     }
-    }
 
     modifier OnlyManager(){
         require(msg.sender == SubscriptionManager, "Only the manager can call this function");
