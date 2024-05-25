@@ -76,7 +76,7 @@ contract LiquidSubscription {
         require(msg.value == MembershipLengthPrices[_MembershipLength], "Incorrect amount sent");
         require(MembershipTypes[_MembershipType] <= HighestTypeInt, "Membership type is too high");
 
-        
+        //calculate the time the subscription will expire as
 
 
         SubsctiptionInfo memory _SubscriptionInfo = SubsctiptionInfo({
