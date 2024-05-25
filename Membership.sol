@@ -76,8 +76,6 @@ contract LiquidSubscriptions {
         return Subscriptions[_Address];
     }
 
-
-
 }
 
 
