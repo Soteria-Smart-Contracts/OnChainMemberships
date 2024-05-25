@@ -214,10 +214,11 @@ contract LiquidSubscription {
         return Subscriptions[ID];
     }
 
-    //is expired view function
     function IsSubscriptionExpired(uint256 ID) public view returns(bool){
         return Subscriptions[ID].SubscriptionExpiry < block.timestamp;
     }
+
+    //timeleftunix 
 
 }
 
