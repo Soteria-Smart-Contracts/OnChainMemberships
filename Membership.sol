@@ -107,6 +107,9 @@ contract LiquidSubscription {
         Subscriptions[SubscriptionID].TotalWeeksSubscribed += Weeks;
     }
 
+    //convert subscription to another tier
+    
+
     //renew and switch type
 
     function RenewAndSwitchType(uint256 SubscriptionID, MembershipTypes _MembershipType, uint256 Weeks) public payable{ //TODO:
