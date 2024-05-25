@@ -22,6 +22,7 @@ contract LiquidSubscription {
     uint256 public TotalSubscriptionsRevenue;
     StandardERC721 public MembershipToken;
     uint256 internal HighestTypeInt;
+    uint256 internal WeekUnix = 604800;
 
     mapping(uint256 => uint256) public SubsciptionStart;
     mapping(uint256 => SubsctiptionInfo) public Subscriptions;
@@ -74,7 +75,7 @@ contract LiquidSubscription {
     function PurchaseSubscription(MembershipTypes _MembershipType, uint256 Weeks) public payable{
         require(msg.value == MembershipLengthPrices[_MembershipLength], "Incorrect amount sent");
 
-        
+
 
         SubsctiptionInfo memory _SubscriptionInfo = SubsctiptionInfo({
             LastPurchaser: msg.sender,
