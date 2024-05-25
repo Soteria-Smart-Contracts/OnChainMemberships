@@ -104,7 +104,13 @@ contract LiquidSubscription {
     //function get minimum time for discount
     function GetDiscountEligibility(uint256 Timebought) public view returns(DiscountStep memory){
         //see if the discount step 0 minimum is less than the time bought, if it is, return the discount step for the appropriate time
-        if
+        if(DiscountSteps[0].MinimumTime <= Timebought){
+            for(uint256 i = 0; i < DiscountSteps.length; i++){
+                if(DiscountSteps[i].MinimumTime <= Timebought){
+                    return DiscountSteps[i];
+                }
+            }
+        }
 
     }
 
