@@ -78,10 +78,10 @@ contract LiquidSubscription {
         require(Weeks > 0, "Weeks must be greater than 0");
 
         //calculate the time the subscription will expire as well as its cost using the membership type and the amount of weeks (with discount if applicable)
-        uint256 TimeBought = block.timestamp + (Weeks * WeekUnix);
-        uint256 Discount = GetDiscountEligibility(TimeBought);
+        uint256 BaseWeeks = EtherAmount / MembershipTypes[_MembershipType].BasePrice;
+        uint256 Discount = GetDiscountEligibility(BaseWeeks);
 
-        uint256 Price = MembershipTypes[_MembershipType].BasePrice * Weeks - (MembershipTypes[_MembershipType].BasePrice * Weeks * Discount / 10000);
+        uint256 Price = MembershipTypes[_MembershipType].BasePrice * BaseWeeks - (MembershipTypes[_MembershipType].BasePrice * BaseWeeks * Discount / 10000);
         require(msg.value >= Price, "Incorrect amount sent");
 
         uint256 TokenID = MembershipToken.Mint(msg.sender);
