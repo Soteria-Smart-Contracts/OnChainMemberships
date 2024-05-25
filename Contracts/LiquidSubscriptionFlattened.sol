@@ -29,23 +29,29 @@ contract LiquidSubscription {
     mapping(MembershipType => uint256) public MembershipTypes;
     DiscountStep[] public DiscountSteps;
 
-    constructor(string _MembershipName, string _MembershipTicker, MembershipType[] memory _MembershipTypes, DiscountStep[] _DiscountSteps) public{
+    constructor(string _MembershipName, string _MembershipTicker, MembershipType[] memory _MembershipTypes, DiscountStep[] memory _DiscountSteps) public{
         MembershipName = _MembershipName;
         MembershipTicker = _MembershipTicker;
         SubscriptionManager = msg.sender;
 
-
         MembershipToken = new StandardERC721(MembershipName, MembershipTicker);
 
+        uint256 previousPrice = 0;
         for(uint256 i = 0; i < _MembershipTypes.length; i++){
+            require(_MembershipTypes[i].BasePrice > previousPrice, "Prices must increase");
             MembershipTypes[_MembershipTypes[i]] = i;
+            previousPrice = _MembershipTypes[i].BasePrice;
+        }
+
+        uint256 previousTime = 0;
+        for(uint256 i = 0; i < _DiscountSteps.length; i++){
+            require(_DiscountSteps[i].MinimumTime > previousTime, "Discount steps must increase");
+            DiscountSteps[i] = _DiscountSteps[i];
+            previousTime = _DiscountSteps[i].MinimumTime;
         }
 
         HighestTypeInt = _MembershipTypes.length - 1;
-
-        for(uint256 i = 0; i < _DiscountSteps.length; i++){
-            DiscountSteps[i] = _DiscountSteps[i];
-        }
+    }
     }
 
     modifier OnlyManager(){
