@@ -81,7 +81,7 @@ contract LiquidSubscription {
         require(msg.value == MembershipLengthPrices[_MembershipLength], "Incorrect amount sent");
     }
 
-    //
+    //change type of subscription
 
     //Only manager functions
 
