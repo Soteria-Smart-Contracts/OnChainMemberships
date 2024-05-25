@@ -52,6 +52,7 @@ contract LiquidSubscription {
         _;
     }
 
+    
 
     struct MembershipType{
         string MembershipTypeName;
