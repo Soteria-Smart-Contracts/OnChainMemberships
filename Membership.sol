@@ -81,7 +81,7 @@ contract LiquidSubscription {
 
         uint256 Price = MembershipTypes[_MembershipType].BasePrice * Weeks;
         Price = Price - (Price * Discount / 10000);
-        require();
+        require(msg.value == Price, "Incorrect amount sent");
         
 
         SubsctiptionInfo memory _SubscriptionInfo = SubsctiptionInfo({
