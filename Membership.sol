@@ -61,8 +61,6 @@ contract LiquidSubscriptions {
         require(msg.value == MembershipLengthPrices[_MembershipLength], "Incorrect amount sent");
     }
 
-    //view functions
-
     function GetMembershipTypes() public view returns(MembershipType[] memory){
         MembershipType[] memory _MembershipTypes = new MembershipType[](MembershipTypes.length);
         for(uint256 i = 0; i < MembershipTypes.length; i++){
@@ -70,7 +68,6 @@ contract LiquidSubscriptions {
         }
         return _MembershipTypes;
     }
-
 
     function GetSubscriptionInfo(address _Address) public view returns(SubsctiptionInfo memory){
         return Subscriptions[_Address];
