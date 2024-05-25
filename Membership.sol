@@ -93,7 +93,7 @@ contract LiquidSubscription {
         });
     }
 
-    function RenewSubscription(uint256 SubscriptionID, MembershipLengths _MembershipLength) public payable{ //TODO:
+    function RenewSubscription(uint256 SubscriptionID, uint256 Weeks) public payable{ //TODO:
         require(Subscriptions[SubscriptionID].SubscriptionExpiry < block.timestamp, "Subscription has not expired yet");
 
         uint256 Price = MembershipTypes[Subscriptions[SubscriptionID].MembershipType].BasePrice * MembershipLengths[_MembershipLength];
