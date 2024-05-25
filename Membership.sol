@@ -116,8 +116,9 @@ contract LiquidSubscription {
         uint256 TimeLeft = Subscriptions[SubscriptionID].SubscriptionExpiry - block.timestamp;
         uint256 WeeksEquivalent = TimeLeft / WeekUnix;
 
-        //get the price of the current and new membership type
-        uint256 CurrentPrice = MembershipTypes[Subscriptions[SubscriptionID].MembershipType].BasePrice * WeeksEquivalent;
+        //get the VALUE Of the time left
+        
+        
 
         uint256 Discount = GetDiscountEligibility(Weeks);
         uint256 Price = MembershipTypes[_MembershipType].BasePrice * Weeks;
