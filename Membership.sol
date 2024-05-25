@@ -44,7 +44,7 @@ contract LiquidSubscription {
         HighestTypeInt = _MembershipTypes.length - 1;
 
         for(uint256 i = 0; i < _DiscountSteps.length; i++){
-            DiscountSteps[MembershipLengths(i)] = _DiscountSteps[i];
+            DiscountSteps[i] = _DiscountSteps[i];
         }
     }
 
