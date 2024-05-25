@@ -199,6 +199,8 @@ contract LiquidSubscription {
 
     }
 
+    function HowManyWeeksCanIGet
+
     function GetMembershipTypes() public view returns(MembershipType[] memory){
         MembershipType[] memory _MembershipTypes = new MembershipType[](MembershipTypes.length);
         for(uint256 i = 0; i < MembershipTypes.length; i++){
