@@ -218,7 +218,10 @@ contract LiquidSubscription {
         return Subscriptions[ID].SubscriptionExpiry < block.timestamp;
     }
 
-    //timeleftunix 
+    //timeleftunix function
+    function GetTimeLeftUnix(uint256 ID) public view returns(uint256){
+        return Subscriptions[ID].SubscriptionExpiry - block.timestamp;
+    }
 
 }
 
