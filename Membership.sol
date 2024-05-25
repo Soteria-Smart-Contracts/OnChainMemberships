@@ -76,8 +76,7 @@ contract LiquidSubscriptions {
 }
 
 contract MembershipMarketplace{
-    
-}
+
 
 
 
