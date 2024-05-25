@@ -87,8 +87,7 @@ contract LiquidSubscription {
         uint256 BaseWeeks = EtherAmount / MembershipTypes[_MembershipType].BasePrice;
         uint256 Discount = GetDiscountEligibility(BaseWeeks);
 
-        uint256 Price = MembershipTypes[_MembershipType].BasePrice * BaseWeeks - (MembershipTypes[_MembershipType].BasePrice * BaseWeeks * Discount / 10000);
-        require(msg.value >= Price, "Incorrect amount sent");
+        //calculate 
 
         uint256 TokenID = MembershipToken.Mint(msg.sender);
 
