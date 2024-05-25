@@ -1482,6 +1482,7 @@ contract StandardERC721 is ERC721Enumerable{
     else{
       _safeMint(to, UnMinted[RandomNumber]);
       if(UnMinted[MaxUnMinted] == 0){
+        uint256 ID = UnMinted[RandomNumber];
         UnMinted[RandomNumber] = MaxUnMinted;
         --MaxUnMinted;
         return(success, RandomNumber);
