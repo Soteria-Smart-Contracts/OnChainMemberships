@@ -103,7 +103,7 @@ contract LiquidSubscription {
         Subscriptions[TokenID] = _SubscriptionInfo;
 
         TotalSubscriptions++;
-        TotalSubscriptionsRevenue += Price;
+        TotalSubscriptionsRevenue += EtherAmount;
 
         return TokenID;
     }
