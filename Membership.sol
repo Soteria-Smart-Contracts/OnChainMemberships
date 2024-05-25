@@ -37,14 +37,15 @@ contract LiquidSubscription {
         for(uint256 i = 0; i < _MembershipTypes.length; i++){
             MembershipTypes[_MembershipTypes[i]] = i;
         }
+        
+        HighestTypeInt = _MembershipTypes.length - 1;
+
 
         for(uint256 i = 0; i < _DiscountSteps.length; i++){
             DiscountSteps[MembershipLengths(i)] = _DiscountSteps[i];
         }
 
         SubscriptionManager = msg.sender;
-
-        
 
     }
 
