@@ -108,6 +108,21 @@ contract LiquidSubscription {
     }
 
     //convert subscription to another tier by calculating the new expirty date by getting the time left, unconverting it back into ether value and then converting it back into the new tier
+    function ConvertSubscription(uint256 SubscriptionID, MembershipTypes _MembershipType) public payable{ //TODO:
+        require(Subscriptions[SubscriptionID].SubscriptionExpiry < block.timestamp, "Subscription has not expired yet");
+        require(MembershipTypes[_MembershipType] <= HighestTypeInt, "Membership type is too high");
+
+        uint256 Discount = GetDiscountEligibility(Weeks);
+        uint256 Price = MembershipTypes[_MembershipType].BasePrice * Weeks;
+
+        Price = Price - (Price * Discount / 10000);
+        require(msg.value >= Price, "Incorrect amount sent");
+
+        Subscriptions[SubscriptionID].LastPurchaser = msg.sender;
+        Subscriptions[SubscriptionID].MembershipType = _MembershipType;
+        Subscriptions[SubscriptionID].SubscriptionExpiry += (Weeks * WeekUnix);
+        Subscriptions[SubscriptionID].TotalWeeksSubscribed += Weeks;
+    }
 
     //renew and switch type
 
