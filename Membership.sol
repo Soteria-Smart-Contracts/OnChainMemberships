@@ -39,6 +39,12 @@ contract LiquidSubscription {
 
     }
 
+    modifier OnlyManager(){
+        require(msg.sender == SubscriptionManager, "Only the manager can call this function");
+        _;
+    }
+
+
     struct MembershipType{
         string MembershipTypeName;
         string MembershipBenefits;
