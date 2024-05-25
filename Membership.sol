@@ -59,14 +59,6 @@ contract LiquidSubscription {
         uint256 BasePrice;
     }
 
-    enum MembershipLengths{
-        Week,
-        Month,
-        ThreeMonths,
-        SixMonths,
-        Year
-    }
-
     struct SubsctiptionInfo{
         address LastPurchaser;
         MembershipTypes MembershipType;
