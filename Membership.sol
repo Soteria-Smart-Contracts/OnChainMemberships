@@ -96,6 +96,9 @@ contract LiquidSubscription {
         require(msg.value == MembershipLengthPrices[_MembershipLength], "Incorrect amount sent");
     }
 
+    //renew and switch type
+    
+
     //change type of subscription
     function ChangeSubscriptionType(uint256 SubscriptionID, MembershipTypes _MembershipType) public OnlyManager{ //TODO:
         Subscriptions[SubscriptionID].MembershipType = _MembershipType;
