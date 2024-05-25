@@ -60,7 +60,7 @@ contract LiquidSubscription {
     }
 
     struct DiscountStep{
-        uint256 DiscountName; //Like 
+        uint256 DiscountUnix; //Like 
     }
 
     struct SubsctiptionInfo{
