@@ -67,7 +67,7 @@ contract LiquidSubscription {
     struct SubsctiptionInfo{
         address LastPurchaser;
         MembershipTypes MembershipType;
-        DiscountStep DiscountTier;
+        uint8 DiscountTier;
         uint256 SubscriptionStart;
         uint256 SubscriptionExpiry; 
         uint256 TotalWeeksSubscribed;
