@@ -109,7 +109,23 @@ contract LiquidSubscription {
 
     //renew and switch type
 
-    
+    function RenewAndSwitchType(uint256 SubscriptionID, MembershipTypes _MembershipType, uint256 Weeks) public payable{ //TODO:
+        require(Subscriptions[SubscriptionID].SubscriptionExpiry < block.timestamp, "Subscription has not expired yet");
+        require(MembershipTypes[_MembershipType] <= HighestTypeInt, "Membership type is too high");
+
+        uint256 Discount = GetDiscountEligibility(Weeks);
+        uint256 Price = MembershipTypes[_MembershipType].BasePrice * Weeks;
+
+        Price = Price - (Price * Discount / 10000);
+        require(msg.value >= Price, "Incorrect amount sent");
+
+        Subscriptions[SubscriptionID].LastPurchaser = msg.sender;
+        Subscriptions[SubscriptionID].MembershipType = _MembershipType;
+        Subscriptions[SubscriptionID].SubscriptionExpiry += (Weeks * WeekUnix);
+        Subscriptions[SubscriptionID].TotalWeeksSubscribed += Weeks;
+    }
+
+
 
 
     //change type of subscription
