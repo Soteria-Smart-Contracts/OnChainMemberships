@@ -135,12 +135,14 @@ contract LiquidSubscription {
         uint256 Value = MembershipTypes[Subscriptions[SubscriptionID].MembershipType].BasePrice * WeeksEquivalent;
         Value = Value - (Value * DiscountAppliedOnPurchase / 10000);
 
+        //because the discount is applied to the number of weeks and not to the value, we need to convert the value back into weeks
+
         uint256 Discount = GetDiscountEligibility(Weeks);
         // if the discount is not 0, increase the value by the discount amount
         if(Discount != 0){
             Value = Value + (Value * Discount / 10000);
         }
-        
+
 
         
         Subscriptions[SubscriptionID].LastPurchaser = msg.sender;
