@@ -102,7 +102,7 @@ contract LiquidSubscription {
     //View Functions
 
     //function get minimum time for discount
-    function IsEligibleForDiscount() public view returns(DiscountStep memory){
+    function IsEligibleForDiscount(uint256 ) public view returns(DiscountStep memory){
         return DiscountSteps[0];
     }
 
