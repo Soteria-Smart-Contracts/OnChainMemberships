@@ -45,7 +45,7 @@ contract LiquidSubscription {
 
         uint256 previousTime = 0;
         for(uint256 i = 0; i < _DiscountSteps.length; i++){
-            require(_DiscountSteps[i].MinimumTime > previousTime, "Discount steps must increase");
+            require(_DiscountSteps[i].MinimumWeeks > previousTime, "Discount steps must increase");
             DiscountSteps[i] = _DiscountSteps[i];
             previousTime = _DiscountSteps[i].MinimumTime;
         }
@@ -65,7 +65,7 @@ contract LiquidSubscription {
     }
 
     struct DiscountStep{
-        uint256 MinimumTime; //Like 
+        uint256 MinimumWeeks; //Like 
         uint256 DiscountPercentage; //In basis points
     }
 
