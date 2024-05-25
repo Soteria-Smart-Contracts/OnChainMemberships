@@ -82,6 +82,9 @@ contract LiquidSubscription {
     }
 
     //change type of subscription
+    function ChangeSubscriptionType(uint256 SubscriptionID, MembershipTypes _MembershipType) public OnlyManager{
+        Subscriptions[SubscriptionID].MembershipType = _MembershipType;
+    }
 
     //Only manager functions
 
