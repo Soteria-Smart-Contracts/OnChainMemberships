@@ -111,6 +111,9 @@ contract LiquidSubscription {
                 }
             }
         }
+        else{
+            return DiscountSteps[0];
+        }
 
     }
 
