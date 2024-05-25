@@ -69,8 +69,7 @@ contract LiquidSubscription {
         MembershipTypes MembershipType;
         uint256 SubscriptionStart;
         uint256 SubscriptionExpiry; 
-        uint256 TotalWeeksElapsed;
-
+        uint256 TotalWeeksSubscribed;
     }
 
     function PurchaseSubscription(MembershipTypes _MembershipType, uint256 Weeks) public payable{ //TODO:
