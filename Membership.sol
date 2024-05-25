@@ -135,10 +135,7 @@ contract LiquidSubscription {
         uint256 Value = MembershipTypes[Subscriptions[SubscriptionID].MembershipType].BasePrice * WeeksEquivalent;
 
         uint256 Discount = GetDiscountEligibility(Weeks);
-        uint256 Price = MembershipTypes[_MembershipType].BasePrice * Weeks;
-
-        Price = Price - (Price * Discount / 10000);
-        require(msg.value >= Price, "Incorrect amount sent");
+        uint256 NewWeeks = Value / MembershipTypes[_MembershipType].BasePrice;
 
         Subscriptions[SubscriptionID].LastPurchaser = msg.sender;
         Subscriptions[SubscriptionID].MembershipType = _MembershipType;
