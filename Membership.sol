@@ -105,10 +105,11 @@ contract LiquidSubscription {
         Subscriptions[SubscriptionID].LastPurchaser = msg.sender;
         Subscriptions[SubscriptionID].SubscriptionExpiry += (Weeks * WeekUnix);
         Subscriptions[SubscriptionID].TotalWeeksSubscribed += Weeks;
-
     }
 
     //renew and switch type
+
+    
 
 
     //change type of subscription
