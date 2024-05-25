@@ -71,8 +71,8 @@ contract LiquidSubscription {
         require(msg.value == MembershipLengthPrices[_MembershipLength], "Incorrect amount sent");
         SubsctiptionInfo memory _SubscriptionInfo = SubsctiptionInfo({
             LastPurchaser: msg.sender,
+            LastPurchase: block.timestamp,
             MembershipType: _MembershipType,
-            SubscriptionStart: block.timestamp,
             SubscriptionExpiry: block.timestamp + MembershipLengths[_MembershipLength]
         });
     }
