@@ -118,6 +118,8 @@ contract LiquidSubscription {
         Subscriptions[SubscriptionID].TotalWeeksSubscribed += Weeks;
 
         TotalSubscriptionsRevenue += Price;
+
+        return true;
     }
 
     //convert subscription to another tier by calculating the new expirty date by getting the time left, unconverting it back into ether value and then converting it back into the new tier
@@ -143,6 +145,8 @@ contract LiquidSubscription {
         Subscriptions[SubscriptionID].MembershipType = _MembershipType;
         Subscriptions[SubscriptionID].SubscriptionExpiry += (Weeks * WeekUnix);
         Subscriptions[SubscriptionID].TotalWeeksSubscribed += Weeks;
+
+        TotalSubscriptionsRevenue += Price;
     }
 
     //renew and switch type
