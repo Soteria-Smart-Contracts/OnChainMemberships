@@ -1492,7 +1492,7 @@ contract StandardERC721 is ERC721Enumerable{
         --MaxUnMinted;
       }
 
-      return(success, RandomNumber);
+      return(success, ID);
     }
   }
 }
