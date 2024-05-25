@@ -53,8 +53,8 @@ contract LiquidSubscription {
     }
 
     enum Lengths{
-        Week,
         Month,
+        ThreeMonth,
         Year
     }
 
