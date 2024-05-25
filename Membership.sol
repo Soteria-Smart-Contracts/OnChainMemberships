@@ -79,7 +79,7 @@ contract LiquidSubscription {
 
     //Only manager functions
 
-    //allow manager to change the price, name, bnefit of a membership type
+    //allow manager to change the price,  of a membership type
 
     //View Functions
 
