@@ -83,7 +83,8 @@ contract LiquidSubscription {
         uint256 Price = MembershipTypes[_MembershipType].BasePrice * Weeks;
         Price = Price - (Price * Discount / 10000);
         require(msg.value >= Price, "Incorrect amount sent");
-        
+        uint256 TokenID = MembershipToken.Mint(msg.sender);
+
 
         SubsctiptionInfo memory _SubscriptionInfo = SubsctiptionInfo({
             LastPurchaser: msg.sender,
@@ -94,9 +95,7 @@ contract LiquidSubscription {
             TotalWeeksSubscribed: += Weeks
         });
 
-        //mint the NFT to the user, get the ID and add the subscription to the mapping
-        uint256 TokenID = MembershipToken.Mint(msg.sender);
-        
+        //mint the NFT to the user, get the ID and add the subscription to the mapping        
     }
 
     function RenewSubscription(uint256 SubscriptionID, uint256 Weeks) public payable{
