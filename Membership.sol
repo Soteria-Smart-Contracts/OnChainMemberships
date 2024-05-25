@@ -112,6 +112,8 @@ contract LiquidSubscription {
         require(Subscriptions[SubscriptionID].SubscriptionExpiry < block.timestamp, "Subscription has not expired yet");
         require(MembershipTypes[_MembershipType] <= HighestTypeInt, "Membership type is too high");
 
+        
+
         uint256 Discount = GetDiscountEligibility(Weeks);
         uint256 Price = MembershipTypes[_MembershipType].BasePrice * Weeks;
 
