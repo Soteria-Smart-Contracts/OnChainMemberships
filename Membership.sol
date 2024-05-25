@@ -81,8 +81,7 @@ contract LiquidSubscription {
         uint256 TimeBought = block.timestamp + (Weeks * WeekUnix);
         uint256 Discount = GetDiscountEligibility(TimeBought);
 
-        uint256 Price = MembershipTypes[_MembershipType].BasePrice * Weeks;
-        Price = Price - (Price * Discount / 10000);
+        uint256 Price = MembershipTypes[_MembershipType].BasePrice * Weeks - (MembershipTypes[_MembershipType].BasePrice * Weeks * Discount / 10000);
         require(msg.value >= Price, "Incorrect amount sent");
 
         uint256 TokenID = MembershipToken.Mint(msg.sender);
