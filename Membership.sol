@@ -1423,8 +1423,10 @@ contract StandardERC721 is ERC721Enumerable{
 
 
   // public
-  function mint() public payable {
+  function mint() public payable return(uint256 ID){
     uint256 ID = RandomMint(msg.sender);
+
+    return ID;
   }
 
   //create a function called CreateNewSubscription that mints a new random nft 
