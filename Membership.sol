@@ -78,7 +78,7 @@ contract LiquidSubscription {
 
         //calculate the time the subscription will expire as well as its cost using the membership type and the amount of weeks (with discount if applicable)
         uint256 TimeBought = block.timestamp + (Weeks * WeekUnix);
-        uint256 Discount = GetDiscountEligibility(TimeBought).DiscountPercentage;
+        uint256 Discount = GetDiscountEligibility(TimeBought);
 
 
         SubsctiptionInfo memory _SubscriptionInfo = SubsctiptionInfo({
@@ -115,7 +115,7 @@ contract LiquidSubscription {
         if(DiscountSteps[0].MinimumTime <= Timebought){
             for(uint256 i = 0; i < DiscountSteps.length; i++){
                 if(DiscountSteps[i].MinimumTime >= Timebought){
-                    return DiscountSteps[i - 1].
+                    return DiscountSteps[i - 1].DiscountPercentage;
                 }
             }
         }
