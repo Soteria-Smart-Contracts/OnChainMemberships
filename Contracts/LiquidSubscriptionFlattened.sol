@@ -47,7 +47,7 @@ contract LiquidSubscription {
         for(uint256 i = 0; i < _DiscountSteps.length; i++){
             require(_DiscountSteps[i].MinimumWeeks > previousTime, "Discount steps must increase");
             DiscountSteps[i] = _DiscountSteps[i];
-            previousTime = _DiscountSteps[i].MinimumTime;
+            previousTime = _DiscountSteps[i].MinimumWeeks;
         }
 
         HighestTypeInt = _MembershipTypes.length - 1;
