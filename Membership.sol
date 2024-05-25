@@ -89,7 +89,7 @@ contract LiquidSubscription {
 
     //allow manager to change the price, benefits and name of a membership type, as well as add new membership types
     function UpdateMembershipType(MembershipType _MembershipType, uint256 _NewPrice, string _NewBenefits) public OnlyManager{
-        //require that the memebeship type lo
+        require(MembershipTypes[_MembershipType] < HighestTypeInt, "Membership type is too high");
         MembershipTypes[_MembershipType].BasePrice = _NewPrice;
         MembershipTypes[_MembershipType].MembershipBenefits = _NewBenefits;
     }
