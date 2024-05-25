@@ -214,7 +214,7 @@ contract LiquidSubscription {
         return Subscriptions[ID];
     }
 
-    //is expi
+    //is expired view 
 
 }
 
