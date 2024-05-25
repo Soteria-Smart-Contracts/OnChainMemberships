@@ -99,6 +99,7 @@ contract LiquidSubscription {
         uint256 Discount = GetDiscountEligibility(Weeks);
         uint256 Price = MembershipTypes[Subscriptions[SubscriptionID].MembershipType].BasePrice * Weeks;
 
+        Price = Price - (Price * Discount / 10000);
         
     }
 
