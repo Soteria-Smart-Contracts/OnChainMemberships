@@ -15,7 +15,7 @@ contract LiquidSubscriptionFactory{
 }
 
 contract LiquidSubscription {
-    address public Subscription
+    address public SubscriptionManager;
     string public MembershipName;
     string public MembershipTicker;
     uint256 public TotalSubscriptions;
