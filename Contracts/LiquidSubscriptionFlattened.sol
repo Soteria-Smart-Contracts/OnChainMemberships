@@ -87,7 +87,7 @@ contract LiquidSubscription {
         uint256 BaseWeeks = EtherAmount / MembershipTypes[_MembershipType].BasePrice;
         uint256 Discount = GetDiscountEligibility(BaseWeeks);
 
-        //calculate 
+        //calculate the 
 
         uint256 TokenID = MembershipToken.Mint(msg.sender);
 
