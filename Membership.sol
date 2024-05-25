@@ -200,11 +200,8 @@ contract LiquidSubscription {
     }
 
     function HowManyWeeksCanIGetByEtherInclusiveOfDiscount(uint256 EtherAmount, MembershipTypes _MembershipType) public view returns(uint256){
-        uint256 Discount = GetDiscountEligibility(block.timestamp);
-        uint256 Price = MembershipTypes[_MembershipType].BasePrice;
-        Price = Price - (Price * Discount / 10000);
-
-        return EtherAmount / Price;
+        //use a loop to find how many weeks can be bought with the ether amount inclusive of discount
+        
     }
 
     function GetMembershipTypes() public view returns(MembershipType[] memory){
