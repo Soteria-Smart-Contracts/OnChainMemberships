@@ -76,7 +76,7 @@ contract LiquidSubscription {
     function PurchaseSubscription(MembershipTypes _MembershipType) public payable returns(uint256 NewSubscriptionTokenID, bool success){
         EtherAmount = msg.value;
         require(MembershipTypes[_MembershipType] <= HighestTypeInt, "Membership type is too high");
-        require(Weeks > 0, "Weeks must be greater than 0");
+        require(Weeks >= 1, "Weeks must be greater than or equal to 1");
 
         //calculate the time the subscription will expire as well as its cost using the membership type and the amount of weeks (with discount if applicable)
         uint256 BaseWeeks = EtherAmount / MembershipTypes[_MembershipType].BasePrice;
