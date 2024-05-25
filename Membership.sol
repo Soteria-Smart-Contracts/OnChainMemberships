@@ -38,6 +38,14 @@ contract LiquidSubscription {
             MembershipTypes[_MembershipTypes[i]] = i;
         }
 
+        for(uint256 i = 0; i < _DiscountSteps.length; i++){
+            DiscountSteps[MembershipLengths(i)] = _DiscountSteps[i];
+        }
+
+        SubscriptionManager = msg.sender;
+
+        
+
     }
 
     modifier OnlyManager(){
