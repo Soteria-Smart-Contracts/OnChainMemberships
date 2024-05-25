@@ -129,8 +129,8 @@ contract LiquidSubscription {
         return _MembershipTypes;
     }
 
-    function GetSubscriptionInfo(address _Address) public view returns(SubsctiptionInfo memory){
-        return Subscriptions[_Address];
+    function GetSubscriptionInfo(uint256 ID) public view returns(SubsctiptionInfo memory){
+        return Subscriptions[ID];
     }
 
 }
