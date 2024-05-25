@@ -61,6 +61,7 @@ contract LiquidSubscription {
 
     struct DiscountStep{
         uint256 MinimumTime; //Like 
+        uint256 DiscountPercentage; //In basis points
     }
 
     struct SubsctiptionInfo{
