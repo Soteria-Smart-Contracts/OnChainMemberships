@@ -88,7 +88,7 @@ contract LiquidSubscription {
             LastPurchaser: msg.sender,
             LastPurchase: block.timestamp,
             MembershipType: _MembershipType,
-            SubscriptionExpiry: block.timestamp + (Weeks * WeekUnix),
+            SubscriptionExpiry: TimeBought,
             TotalWeeksSubscribed: += Weeks
         });
     }
@@ -100,7 +100,7 @@ contract LiquidSubscription {
         uint256 Price = MembershipTypes[Subscriptions[SubscriptionID].MembershipType].BasePrice * Weeks;
 
         Price = Price - (Price * Discount / 10000);
-        
+
     }
 
     //renew and switch type
