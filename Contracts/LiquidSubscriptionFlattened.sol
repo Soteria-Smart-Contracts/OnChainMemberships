@@ -108,20 +108,35 @@ contract LiquidSubscription {
         return TokenID;
     }
 
-    function RenewSubscription(uint256 SubscriptionID, uint256 Weeks) public payable returns(bool success){
-        uint256 Discount = GetDiscountEligibility(Weeks);
-        uint256 Price = MembershipTypes[Subscriptions[SubscriptionID].MembershipType].BasePrice * Weeks;
-
-        Price = Price - (Price * Discount / 10000);
-        require(msg.value >= Price, "Incorrect amount sent");
-
+    function RenewSubscription(uint256 SubscriptionID, MembershipTypes _MembershipType) public payable returns(bool success){
+        require(Subscriptions[SubscriptionID].SubscriptionExpiry < block.timestamp, "Subscription has not expired yet");
+        require(MembershipTypes[_MembershipType] <= HighestTypeInt, "Membership type is too high");
+        
+        uint256 TimeLeft = Subscriptions[SubscriptionID].SubscriptionExpiry - block.timestamp;
+        uint256 WeeksEquivalent = TimeLeft / WeekUnix;
+        
+        uint256 BaseWeeks = msg.value / MembershipTypes[_MembershipType].BasePrice;
+        uint256 Discount = GetDiscountEligibility(BaseWeeks);
+        uint256 ExtraWeeks = BaseWeeks * Discount / 10000;
+        uint256 TotalWeeks = BaseWeeks + ExtraWeeks;
+        uint256 TimeBought = TotalWeeks * WeekUnix;
+        
+        uint256 Value = MembershipTypes[Subscriptions[SubscriptionID].MembershipType].BasePrice * WeeksEquivalent;
+        Value = Value - (Value * Subscriptions[SubscriptionID].DiscountPercentage / 10000);
+        
+        uint256 DiscountAppliedOnPurchase = GetDiscountEligibility(TotalWeeks);
+        if(DiscountAppliedOnPurchase != 0){
+            Value = Value + (Value * DiscountAppliedOnPurchase / 10000);
+        }
+        
         Subscriptions[SubscriptionID].LastPurchaser = msg.sender;
         Subscriptions[SubscriptionID].LastPurchase = block.timestamp;
+        Subscriptions[SubscriptionID].MembershipType = _MembershipType;
         Subscriptions[SubscriptionID].DiscountPercentage = Discount;
-        Subscriptions[SubscriptionID].SubscriptionExpiry += (Weeks * WeekUnix);
-        Subscriptions[SubscriptionID].TotalWeeksSubscribed += Weeks;
+        Subscriptions[SubscriptionID].SubscriptionExpiry = block.timestamp + TimeBought;
+        Subscriptions[SubscriptionID].TotalWeeksSubscribed += TotalWeeks;
 
-        TotalSubscriptionsRevenue += Price;
+        TotalSubscriptionsRevenue += msg.value - Value;
 
         return true;
     }
@@ -158,21 +173,7 @@ contract LiquidSubscription {
 
     //renew and switch type
 
-    function RenewAndSwitchType(uint256 SubscriptionID, MembershipTypes _MembershipType, uint256 Weeks) public payable{ //TODO:
-        require(Subscriptions[SubscriptionID].SubscriptionExpiry < block.timestamp, "Subscription has not expired yet");
-        require(MembershipTypes[_MembershipType] <= HighestTypeInt, "Membership type is too high");
-
-        uint256 Discount = GetDiscountEligibility(Weeks);
-        uint256 Price = MembershipTypes[_MembershipType].BasePrice * Weeks;
-
-        Price = Price - (Price * Discount / 10000);
-        require(msg.value >= Price, "Incorrect amount sent");
-
-        Subscriptions[SubscriptionID].LastPurchaser = msg.sender;
-        Subscriptions[SubscriptionID].MembershipType = _MembershipType;
-        Subscriptions[SubscriptionID].SubscriptionExpiry += (Weeks * WeekUnix);
-        Subscriptions[SubscriptionID].TotalWeeksSubscribed += Weeks;
-    }
+    //renew and convert
 
 
     //Only manager functions
