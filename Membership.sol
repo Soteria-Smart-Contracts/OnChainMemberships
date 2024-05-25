@@ -29,7 +29,7 @@ contract LiquidSubscription {
     mapping(MembershipType => uint256) public MembershipTypes;
     DiscountStep[] public DiscountSteps;
 
-    constructor(string _MembershipName, string _MembershipTicker, MembershipType[] memory _MembershipTypes, uint256[] _DiscountSteps) public{
+    constructor(string _MembershipName, string _MembershipTicker, MembershipType[] memory _MembershipTypes, DiscountStep[] _DiscountSteps) public{
         MembershipName = _MembershipName;
         MembershipTicker = _MembershipTicker;
         SubscriptionManager = msg.sender;
