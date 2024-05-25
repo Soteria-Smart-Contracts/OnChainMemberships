@@ -83,6 +83,7 @@ contract LiquidSubscription {
         Price = Price - (Price * Discount / 10000);
         require(msg.value >= Price, "Incorrect amount sent");
 
+        //calculate the new expiry, dont forget to incld
         uint256 NewExpiry 
         
 
