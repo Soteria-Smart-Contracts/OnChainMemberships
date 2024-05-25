@@ -87,7 +87,8 @@ contract LiquidSubscription {
         uint256 BaseWeeks = EtherAmount / MembershipTypes[_MembershipType].BasePrice;
         uint256 Discount = GetDiscountEligibility(BaseWeeks);
 
-        //calculate the number  of extra weeks based on the d
+        //calculate the number  of extra weeks based on the discount
+        uint256 ExtraWeeks = BaseWeeks * Discount / 10000;
 
         uint256 TokenID = MembershipToken.Mint(msg.sender);
 
