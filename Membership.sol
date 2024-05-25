@@ -88,7 +88,7 @@ contract LiquidSubscription {
             LastPurchaser: msg.sender,
             LastPurchase: block.timestamp,
             MembershipType: _MembershipType,
-            SubscriptionExpiry: block.timestamp + MembershipLengths[_MembershipLength]
+            SubscriptionExpiry: block.timestamp + (Weeks * WeekUnix),
             TotalWeeksSubscribed: += Weeks
         });
     }
