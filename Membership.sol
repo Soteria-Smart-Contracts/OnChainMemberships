@@ -107,7 +107,7 @@ contract LiquidSubscription {
         Subscriptions[SubscriptionID].TotalWeeksSubscribed += Weeks;
     }
 
-    //convert subscription to another tier by calculating the new exp
+    //convert subscription to another tier by calculating the new expirty date by 
 
     //renew and switch type
 
