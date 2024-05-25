@@ -199,7 +199,13 @@ contract LiquidSubscription {
 
     }
 
-    function HowManyWeeksCanIGet
+    function HowManyWeeksCanIGetByEtherInclusiveOfDiscount(uint256 EtherAmount, MembershipTypes _MembershipType) public view returns(uint256){
+        uint256 Discount = GetDiscountEligibility(block.timestamp);
+        uint256 Price = MembershipTypes[_MembershipType].BasePrice;
+        Price = Price - (Price * Discount / 10000);
+
+        return EtherAmount / Price;
+    }
 
     function GetMembershipTypes() public view returns(MembershipType[] memory){
         MembershipType[] memory _MembershipTypes = new MembershipType[](MembershipTypes.length);
