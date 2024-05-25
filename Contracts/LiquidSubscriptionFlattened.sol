@@ -90,6 +90,9 @@ contract LiquidSubscription {
         //calculate the number  of extra weeks based on the discount
         uint256 ExtraWeeks = BaseWeeks * Discount / 10000;
 
+        //calculate the total amount of weeks
+        uint256 Weeks = BaseWeeks + ExtraWeeks;
+
         uint256 TokenID = MembershipToken.Mint(msg.sender);
 
         SubsctiptionInfo memory _SubscriptionInfo = SubsctiptionInfo({
