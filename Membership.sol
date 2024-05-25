@@ -73,6 +73,9 @@ contract LiquidSubscription {
 
     function PurchaseSubscription(MembershipTypes _MembershipType, uint256 Weeks) public payable{
         require(msg.value == MembershipLengthPrices[_MembershipLength], "Incorrect amount sent");
+
+        
+
         SubsctiptionInfo memory _SubscriptionInfo = SubsctiptionInfo({
             LastPurchaser: msg.sender,
             LastPurchase: block.timestamp,
