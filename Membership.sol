@@ -31,12 +31,15 @@ contract LiquidSubscription {
     constructor(string _MembershipName, string _MembershipTicker, MembershipType[] memory _MembershipTypes, uint256[] _DiscountSteps) public{
         MembershipName = _MembershipName;
         MembershipTicker = _MembershipTicker;
+        SubscriptionManager = msg.sender;
+
 
         MembershipToken = new StandardERC721(MembershipName, MembershipTicker);
 
         for(uint256 i = 0; i < _MembershipTypes.length; i++){
             MembershipTypes[_MembershipTypes[i]] = i;
         }
+
         HighestTypeInt = _MembershipTypes.length - 1;
 
         for(uint256 i = 0; i < _DiscountSteps.length; i++){
