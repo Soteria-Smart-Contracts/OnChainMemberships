@@ -60,7 +60,7 @@ contract LiquidSubscription {
     }
 
     struct DiscountStep{
-        string 
+        string DiscountName; //Like 
     }
 
     struct SubsctiptionInfo{
