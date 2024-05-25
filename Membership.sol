@@ -80,6 +80,9 @@ contract LiquidSubscription {
         uint256 TimeBought = block.timestamp + (Weeks * WeekUnix);
         uint256 Discount = GetDiscountEligibility(TimeBought);
 
+        uint256 Price = MembershipTypes[_MembershipType].BasePrice * Weeks;
+        uint256 DiscountedPrice = Price - (Price * Discount / 10000);
+
 
         SubsctiptionInfo memory _SubscriptionInfo = SubsctiptionInfo({
             LastPurchaser: msg.sender,
