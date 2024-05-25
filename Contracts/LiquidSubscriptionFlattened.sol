@@ -87,7 +87,7 @@ contract LiquidSubscription {
         uint256 Discount = GetDiscountEligibility(BaseWeeks);
         uint256 ExtraWeeks = BaseWeeks * Discount / 10000;
         uint256 TotalWeeks = BaseWeeks + ExtraWeeks;
-        uint256 Time
+        uint256 TimeBought = TotalWeeks * WeekUnix;
 
         uint256 TokenID = MembershipToken.Mint(msg.sender);
 
