@@ -106,7 +106,7 @@ contract LiquidSubscription {
 
         Subscriptions[SubscriptionID].LastPurchaser = msg.sender;
         Subscriptions[SubscriptionID].LastPurchase = block.timestamp;
-        Subscriptions[SubscriptionID].SubscriptionExpiry += (Weeks * WeekUnix);
+        Subscriptions[SubscriptionID].DiscountPercentage = Discount;
         Subscriptions[SubscriptionID].SubscriptionExpiry += (Weeks * WeekUnix);
         Subscriptions[SubscriptionID].TotalWeeksSubscribed += Weeks;
     }
