@@ -200,7 +200,7 @@ contract LiquidSubscription {
     }
 
     function HowManyWeeksCanIGetByEtherInclusiveOfDiscount(uint256 EtherAmount, MembershipTypes _MembershipType) public view returns(uint256){
-        //use a loop to find how many weeks can be bought with the ether amount inclusive of discount, remember there is no way to fi
+        //use a loop to find how many weeks can be bought with the ether amount inclusive of discount, remember there is no way to find the discount without the time bough
     }
 
     function GetMembershipTypes() public view returns(MembershipType[] memory){
