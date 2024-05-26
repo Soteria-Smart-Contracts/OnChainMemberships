@@ -9,6 +9,7 @@ loginWithEth();
 
 
 async function loginWithEth(){
+    console.log('helo')
     if(LoggedIn == false){
     if(window.ethereum){
         await ethereum.request({ method: 'eth_requestAccounts' });
@@ -26,13 +27,6 @@ async function loginWithEth(){
         LoggedIn = true;
         document.getElementById('overlay').style.display = 'none';
         //if the goto is Purchase, go to the IDVerify.html
-        if(goto == 'Purchase'){
-            window.location.href = "IDVerify.html";
-        }
-        //if its Create, go to the Create.html
-        else if(goto == 'Create'){
-            window.location.href = "Create.html";
-        }
     } else { 
         alert("No ETHER Wallet available")
     }
