@@ -110,8 +110,9 @@ contract LiquidSubscription {
 
     function RenewSubscription(uint256 SubscriptionID, MembershipTypes _MembershipType) public payable returns(bool success){
         //if the subscription has expired, require that the message value is greater than the base price of the lowest tier membership type
-
-
+        if (Subscriptions[SubscriptionID].SubscriptionExpiry < block.timestamp) {
+            require(msg.value >= MembershipTypes[0].BasePrice, "Insufficient payment");
+        }
         
         require(MembershipTypes[_MembershipType] <= HighestTypeInt, "Membership type is too high");
         
