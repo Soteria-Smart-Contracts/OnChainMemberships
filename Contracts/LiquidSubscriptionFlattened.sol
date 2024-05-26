@@ -234,7 +234,7 @@ contract LiquidSubscription {
 
 }
 
-//contract MembershipMarketplace{
+contract MembershipMarketplace{
 
 
 
