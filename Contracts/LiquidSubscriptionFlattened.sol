@@ -192,7 +192,7 @@ contract LiquidSubscription {
     function RemoveMembershipType(MembershipType _MembershipType) public OnlyManager{
         require(MembershipTypes[_MembershipType] != 0, "Membership type does not exist");
         MembershipTypes[_MembershipType] = 0;
-        
+        HighestTypeInt--;
     }
 
     //View Functions
