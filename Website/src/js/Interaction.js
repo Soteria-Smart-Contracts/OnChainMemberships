@@ -22,6 +22,7 @@ async function loginWithEth(goto){
         console.log('Logged In')
         LoggedIn = true;
         document.getElementById('overlay').style.display = 'none';
+        //if the goto is Purchase, go to the ID
     } else { 
         alert("No ETHER Wallet available")
     }
