@@ -117,7 +117,7 @@ contract LiquidSubscription {
         require(MembershipTypes[_MembershipType] <= HighestTypeInt, "Membership type is too high");
         
         uint256 TimeLeft = Subscriptions[SubscriptionID].SubscriptionExpiry - block.timestamp;
-        uint256 WeeksEquivalent = TimeLeft / WeekUnix;
+        uint256 WeeksEquivalent = TimeLeft / WeekUnix; //theres extra here buddy dont forget
 
         uint256 Value = MembershipTypes[Subscriptions[SubscriptionID].MembershipType].BasePrice * WeeksEquivalent;
         Value = Value - (Value * Subscriptions[SubscriptionID].DiscountPercentage / 10000);
