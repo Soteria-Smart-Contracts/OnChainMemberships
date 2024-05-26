@@ -20,7 +20,6 @@ async function loginWithEth(){
             alert("The current Metamask/Web3 network is not Ropsten, please connect to the Ethereum Classic network.");
             return("Failed to connect")
         }
-        console.log('helo')
         accountarray = await web3.eth.getAccounts();
        // contract = new window.web3.eth.Contract(ABI, contractAddress, window.web3);
         account = accountarray[0];
