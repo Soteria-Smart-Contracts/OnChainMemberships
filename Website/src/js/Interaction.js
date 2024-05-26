@@ -22,6 +22,7 @@ async function loginWithEth(){
         account = accountarray[0];
         console.log('Logged In')
         LoggedIn = true;
+        document.getElementById('overlay').style.display = 'none';
     } else { 
         alert("No ETHER Wallet available")
     }
