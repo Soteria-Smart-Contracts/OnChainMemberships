@@ -124,6 +124,7 @@ contract LiquidSubscription {
         uint256 Value = MembershipTypes[Subscriptions[SubscriptionID].MembershipType].BasePrice * WeeksEquivalent;
         Value = Value - (Value * Subscriptions[SubscriptionID].DiscountPercentage / 10000);
         
+        
         Subscriptions[SubscriptionID].LastPurchaser = msg.sender;
         Subscriptions[SubscriptionID].LastPurchase = block.timestamp;
         Subscriptions[SubscriptionID].MembershipType = _MembershipType;
