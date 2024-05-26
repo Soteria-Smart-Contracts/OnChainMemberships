@@ -165,6 +165,8 @@ contract LiquidSubscription {
         Subscriptions[TokenID] = _SubscriptionInfo;
 
         Subscriptions[SubscriptionID].SubscriptionExpiry = block.timestamp;
+        Subscriptions[SubscriptionID].TotalWeeksSubscribed = 0;
+
         return TokenID;
     }
 
