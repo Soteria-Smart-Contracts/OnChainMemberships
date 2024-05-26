@@ -188,7 +188,15 @@ contract LiquidSubscription {
         MembershipTypes[_MembershipType] = HighestTypeInt;
     }
 
-    //allow manager to edit 
+    //allow manager to edit the discount steps
+    function UpdateDiscountSteps(DiscountStep[] memory _DiscountSteps) public OnlyManager{
+        uint256 previousTime = 0;
+        for(uint256 i = 0; i < _DiscountSteps.length; i++){
+            require(_DiscountSteps[i].MinimumWeeks > previousTime, "Discount steps must increase");
+            DiscountSteps[i] = _DiscountSteps[i];
+            previousTime = _DiscountSteps[i].MinimumWeeks;
+        }
+    }
 
 
     //View Functions
