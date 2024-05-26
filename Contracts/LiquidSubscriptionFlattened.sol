@@ -140,41 +140,6 @@ contract LiquidSubscription {
         return true;
     }
 
-    //convert subscription to another tier by calculating the new expirty date by getting the time left, unconverting it back into ether value and then converting it back into the new tier
-    function ConvertSubscription(uint256 SubscriptionID, MembershipTypes _MembershipType) public payable{
-        require(Subscriptions[SubscriptionID].SubscriptionExpiry < block.timestamp, "Subscription has not expired yet");
-        require(MembershipTypes[_MembershipType] <= HighestTypeInt, "Membership type is too high");
-
-        //get the time left on the subscription
-        uint256 TimeLeft = Subscriptions[SubscriptionID].SubscriptionExpiry - block.timestamp;
-        uint256 WeeksEquivalent = TimeLeft / WeekUnix;
-
-        //get the VALUE Of the time left and account for the original discount applied
-        uint256 DiscountAppliedOnPurchase = Subscriptions[SubscriptionID].DiscountPercentage;
-        uint256 Value = MembershipTypes[Subscriptions[SubscriptionID].MembershipType].BasePrice * WeeksEquivalent;
-        Value = Value - (Value * DiscountAppliedOnPurchase / 10000);
-
-        //because the discount is applied to the number of weeks and not to the value, we need to find a way to convert the value directly into the new tier
-
-        uint256 Discount = GetDiscountEligibility(Weeks);
-        // if the discount is not 0, increase the value by the discount amount
-        if(Discount != 0){
-            Value = Value + (Value * Discount / 10000);
-        }
-
-        Subscriptions[SubscriptionID].LastPurchaser = msg.sender;
-        Subscriptions[SubscriptionID].MembershipType = _MembershipType;
-        Subscriptions[SubscriptionID].SubscriptionExpiry += (Weeks * WeekUnix);
-        Subscriptions[SubscriptionID].TotalWeeksSubscribed += Weeks;
-
-        TotalSubscriptionsRevenue += Price;
-    }
-
-    //renew and switch type
-
-    //renew and convert
-
-
     //Only manager functions
 
     //allow manager to change the price, benefits and name of a membership type, as well as add new membership types
