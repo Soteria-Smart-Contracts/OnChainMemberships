@@ -109,7 +109,7 @@ contract LiquidSubscription {
     }
 
     function RenewSubscription(uint256 SubscriptionID, MembershipTypes _MembershipType) public payable returns(bool success){
-        //if the s
+        //if the subscription has expired, 
         require(MembershipTypes[_MembershipType] <= HighestTypeInt, "Membership type is too high");
         
         uint256 TimeLeft = Subscriptions[SubscriptionID].SubscriptionExpiry - block.timestamp;
