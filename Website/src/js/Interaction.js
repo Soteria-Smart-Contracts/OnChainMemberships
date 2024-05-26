@@ -3,6 +3,7 @@ const ABI = window.abi;
 let account;
 let netID;
 let goto;
+let LoggedIn;
 
 
 async function loginWithEth(goto){
