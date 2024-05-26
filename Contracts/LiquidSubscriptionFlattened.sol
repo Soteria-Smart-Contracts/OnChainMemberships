@@ -95,8 +95,7 @@ contract LiquidSubscription {
     function PurchaseSubscription(MembershipTypes _MembershipType) public payable returns(uint256 NewSubscriptionTokenID, bool success){
         uint256 EtherAmount = msg.value;
         require(MembershipTypes[_MembershipType] <= HighestTypeInt, "Membership type is too high");
-        require(Weeks >= 1, "Weeks must be greater than or equal to 1");
-
+        
         uint256 BaseWeeks = EtherAmount / MembershipTypes[_MembershipType].BasePrice;
         uint256 Discount = GetDiscountEligibility(BaseWeeks);
         uint256 ExtraWeeks = BaseWeeks * Discount / 10000;
