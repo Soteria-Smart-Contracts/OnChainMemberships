@@ -40,7 +40,7 @@ contract LiquidSubscription {
 
     mapping(uint256 => uint256) public SubsciptionStart;
     mapping(uint256 => SubsctiptionInfo) public Subscriptions;
-    mapping(MembershipType => uint256) public MembershipTypes;
+    mapping(uint256 => MembershipType) public MembershipTypes;
     DiscountStep[] public DiscountSteps;
 
     constructor(string memory _MembershipName, string memory _MembershipTicker, MembershipType[] memory _MembershipTypes, DiscountStep[] memory _DiscountSteps) public{
