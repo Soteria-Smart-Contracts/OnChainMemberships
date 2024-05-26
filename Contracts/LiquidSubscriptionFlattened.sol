@@ -131,7 +131,7 @@ contract LiquidSubscription {
         uint256 TimeBought = TotalWeeks * WeekUnix;
 
         //add back the extra time converted to the correct tier even if its not a full week
-        Equi
+        EquivalentExtraTime = ExtraTime / WeekUnix;
         
         Subscriptions[SubscriptionID].LastPurchaser = msg.sender;
         Subscriptions[SubscriptionID].LastPurchase = block.timestamp;
