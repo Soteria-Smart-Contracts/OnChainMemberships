@@ -146,7 +146,7 @@ contract LiquidSubscription {
         require(Recipient != address(0), "Recipient cannot be the zero address");
         require(Weeks >= 1, "Weeks must be greater than or equal to 1");
         //require the subscription to have atleast one week on it and its not expired
-        require(Subscriptions[SubscriptionID].TotalWeeksSubscribed >= Weeks, "Not enough weeks to split");
+        require(Subscriptions[SubscriptionID].TotalWeeksSubscribed >= Weeks && , "Not enough weeks to split");
         //warning if you have two memberships in the same address, they will both continue to elapse
 
         uint256 TimeLeft = Subscriptions[SubscriptionID].SubscriptionExpiry - block.timestamp;
