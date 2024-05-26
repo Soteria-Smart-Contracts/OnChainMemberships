@@ -116,8 +116,8 @@ contract LiquidSubscription {
         uint256 WeeksEquivalent = TimeLeft / WeekUnix;
         uint256 Value = MembershipTypes[Subscriptions[SubscriptionID].MembershipType].BasePrice * WeeksEquivalent;
         Value = Value - (Value * Subscriptions[SubscriptionID].DiscountPercentage / 10000);
-        
-        
+        TotalS
+
         uint256 BaseWeeks = msg.value / MembershipTypes[_MembershipType].BasePrice;
         uint256 Discount = GetDiscountEligibility(BaseWeeks);
         uint256 ExtraWeeks = BaseWeeks * Discount / 10000;
