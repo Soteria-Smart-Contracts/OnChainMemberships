@@ -23,6 +23,7 @@ async function loginWithEth(){
         accountarray = await web3.eth.getAccounts();
        // contract = new window.web3.eth.Contract(ABI, contractAddress, window.web3);
         account = accountarray[0];
+        console.log('Logged Ineeeee')
         console.log('helo')
         console.log('Logged Ineeeee')
         LoggedIn = true;
