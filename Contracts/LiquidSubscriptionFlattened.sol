@@ -129,6 +129,8 @@ contract LiquidSubscription {
         uint256 ExtraWeeks = BaseWeeks * Discount / 10000;
         uint256 TotalWeeks = BaseWeeks + ExtraWeeks;
         uint256 TimeBought = TotalWeeks * WeekUnix;
+
+        //add back the extra time converted to the corr
         
         Subscriptions[SubscriptionID].LastPurchaser = msg.sender;
         Subscriptions[SubscriptionID].LastPurchase = block.timestamp;
