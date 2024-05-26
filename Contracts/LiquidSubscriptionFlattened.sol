@@ -194,12 +194,9 @@ contract LiquidSubscription {
         }
     }
 
-
     //View Functions
 
-    //function get minimum time for discount
     function GetDiscountEligibility(uint256 Weeks) public view returns(uint256){
-        //see if the discount step 0 minimum is less than the weeks bought, if it is, return the discount step for the appropriate time
         if(DiscountSteps[0].MinimumWeeks <= Weeks){
             for(uint256 i = 0; i < DiscountSteps.length; i++){
                 if(DiscountSteps[i].MinimumWeeks >= Weeks){
