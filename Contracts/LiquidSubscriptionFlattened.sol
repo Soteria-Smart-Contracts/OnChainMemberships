@@ -234,9 +234,6 @@ contract LiquidSubscription {
 
 }
 
-contract MembershipMarketplace{
-
-
 
 
 library Strings {
