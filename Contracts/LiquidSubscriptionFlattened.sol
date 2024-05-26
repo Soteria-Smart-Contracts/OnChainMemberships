@@ -124,8 +124,6 @@ contract LiquidSubscription {
         uint256 TotalWeeks = BaseWeeks + ExtraWeeks;
         uint256 TimeBought = TotalWeeks * WeekUnix;
         
-
-        
         Subscriptions[SubscriptionID].LastPurchaser = msg.sender;
         Subscriptions[SubscriptionID].LastPurchase = block.timestamp;
         Subscriptions[SubscriptionID].MembershipType = _MembershipType;
