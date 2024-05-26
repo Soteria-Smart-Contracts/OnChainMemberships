@@ -143,7 +143,6 @@ contract LiquidSubscription {
     //split subscription function, allowing users to split their subscription into two separate subscriptions nfts and send the other to a desired address
     function SplitSubscription(uint256 SubscriptionID, address Recipient) public returns(uint256 NewSubscriptionTokenID){
         require(Recipient != address(0), "Recipient cannot be the zero address");
-        require(Recipient != Subscriptions[SubscriptionID].LastPurchaser, "Recipient cannot be the same as the last purchaser");
 
         uint256 TimeLeft = Subscriptions[SubscriptionID].SubscriptionExpiry - block.timestamp;
         uint256 WeeksEquivalent = TimeLeft / WeekUnix;
