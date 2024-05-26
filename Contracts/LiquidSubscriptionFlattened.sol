@@ -114,6 +114,9 @@ contract LiquidSubscription {
         
         uint256 TimeLeft = Subscriptions[SubscriptionID].SubscriptionExpiry - block.timestamp;
         uint256 WeeksEquivalent = TimeLeft / WeekUnix;
+        uint256 Value = MembershipTypes[Subscriptions[SubscriptionID].MembershipType].BasePrice * WeeksEquivalent;
+        Value = Value - (Value * Subscriptions[SubscriptionID].DiscountPercentage / 10000);
+        
         
         uint256 BaseWeeks = msg.value / MembershipTypes[_MembershipType].BasePrice;
         uint256 Discount = GetDiscountEligibility(BaseWeeks);
@@ -121,9 +124,7 @@ contract LiquidSubscription {
         uint256 TotalWeeks = BaseWeeks + ExtraWeeks;
         uint256 TimeBought = TotalWeeks * WeekUnix;
         
-        uint256 Value = MembershipTypes[Subscriptions[SubscriptionID].MembershipType].BasePrice * WeeksEquivalent;
-        Value = Value - (Value * Subscriptions[SubscriptionID].DiscountPercentage / 10000);
-        
+
         
         Subscriptions[SubscriptionID].LastPurchaser = msg.sender;
         Subscriptions[SubscriptionID].LastPurchase = block.timestamp;
