@@ -111,7 +111,7 @@ contract LiquidSubscription {
             MembershipType: _MembershipType,
             DiscountPercentage: Discount,
             SubscriptionExpiry: TimeBought,
-            TotalWeeksSubscribed: TotalWeeksSubscribed + TotalWeeks
+            TotalWeeksSubscribed: Subscriptions[SubscriptionID].TotalWeeksSubscribed + TotalWeeks
         });
 
         Subscriptions[TokenID] = _SubscriptionInfo;
