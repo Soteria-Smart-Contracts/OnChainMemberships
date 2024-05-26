@@ -140,7 +140,8 @@ contract LiquidSubscription {
         return true;
     }
 
-    //split subscription function, allowing users to split their subscription into two separate subscriptions and 
+    //split subscription function, allowing users to split their subscription into two separate subscriptions nfts and send the other to a desired address
+    
 
     //Only manager functions
 
