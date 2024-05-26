@@ -145,8 +145,7 @@ contract LiquidSubscription {
     function SplitSubscription(uint256 SubscriptionID, address Recipient, uint256 Weeks) public returns(uint256 NewSubscriptionTokenID){
         require(Recipient != address(0), "Recipient cannot be the zero address");
         require(Weeks >= 1, "Weeks must be greater than or equal to 1");
-        //require the subscription to have atleast one week on it and its not expired
-        require(Subscriptions[SubscriptionID].TotalWeeksSubscribed >= Weeks && , "Not enough weeks to split");
+        require(Subscriptions[SubscriptionID].TotalWeeksSubscribed >= Weeks && Subscriptions[SubscriptionID].SubscriptionExpiry > block.timestamp, "Insufficient weeks or subscription expired");
         //warning if you have two memberships in the same address, they will both continue to elapse
 
         uint256 TimeLeft = Subscriptions[SubscriptionID].SubscriptionExpiry - block.timestamp;
