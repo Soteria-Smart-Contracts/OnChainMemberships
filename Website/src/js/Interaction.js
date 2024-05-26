@@ -30,6 +30,6 @@ async function loginWithEth(){
 }
 
 async function getID(){
-    netID = await web3.eth.net.getId();
+    netID = await web3.eth.getChainId();
     return(netID);
 }
