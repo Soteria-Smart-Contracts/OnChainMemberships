@@ -2,12 +2,121 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CannaShip</title>
+    <title>CannaShip Landing Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+        .content {
+            text-align: center;
+            padding: 100px 20px;
+        }
+        .btn {
+            padding: 15px 30px;
+            margin: 20px;
+            font-size: 18px;
+            cursor: pointer;
+            border: none;
+            background-color: #333;
+            color: white;
+        }
+        #connectWallet {
+            background-color: #5cb85c;
+            float: right;
+        }
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            display: none;
+            z-index: 1000;
+        }
+        .overlay-content {
+            text-align: center;
+        }
+        .overlay-content button {
+            padding: 10px 20px;
+            font-size: 18px;
+        }
+    </style>
 </head>
 <body>
-    <div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
-        <h1 style="font-size: 48px; font-weight: bold; text-align: center;">hi i smoke weed</h1>
+    <div class="navbar">
+        <div class="navbar-links" id="navbarLinks">
+            <a href="#" id="homeLink">Home</a>
+            <a href="#" id="createLink">Create Subscription</a>
+            <a href="#" id="purchaseLink">Purchase Subscription</a>
+        </div>
+        <button id="connectWallet" onclick="connectWallet()">Connect Wallet</button>
     </div>
+
+    <div class="content">
+        <button class="btn" id="purchaseBtn" onclick="showOverlay()">Purchase Subscriptions</button>
+        <button class="btn" id="createBtn" onclick="showOverlay()">Create Subscription Service</button>
+    </div>
+
+    <div id="overlay">
+        <div class="overlay-content">
+            <p>Please connect your wallet to proceed.</p>
+            <button onclick="connectWallet()">Connect Wallet</button>
+        </div>
+    </div>
+
+    <script>
+        function showOverlay() {
+            document.getElementById('overlay').style.display = 'flex';
+        }
+
+        function connectWallet() {
+            // Placeholder for wallet connection logic
+            alert('Connecting wallet...');
+            // On successful wallet connection:
+            document.getElementById('overlay').style.display = 'none';
+        }
+
+        // Switch navbar options based on user's choice
+        document.getElementById('createBtn').addEventListener('click', () => {
+            document.getElementById('navbarLinks').innerHTML = `
+                <a href="#">Home</a>
+                <a href="#">Create Subscription</a>
+                <a href="#">Manage Membership Types</a>
+                <a href="#">Manage Discount Steps</a>
+                <a href="#">View Subscriptions</a>
+            `;
+        });
+
+        document.getElementById('purchaseBtn').addEventListener('click', () => {
+            document.getElementById('navbarLinks').innerHTML = `
+                <a href="#">Home</a>
+                <a href="#">Purchase Subscription</a>
+                <a href="#">View My Subscriptions</a>
+                <a href="#">Transfer Subscription</a>
+                <a href="#">Split Subscription</a>
+            `;
+        });
+    </script>
 </body>
 </html>
