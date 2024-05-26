@@ -97,6 +97,7 @@ contract LiquidSubscription {
         require(MembershipTypes[_MembershipType] <= HighestTypeInt, "Membership type is too high");
         
         uint256 BaseWeeks = EtherAmount / MembershipTypes[_MembershipType].BasePrice;
+        require(BaseWeeks >= 1, "Ether amount must be enough for at least 1 week of the requested tier");
         uint256 Discount = GetDiscountEligibility(BaseWeeks);
         uint256 ExtraWeeks = BaseWeeks * Discount / 10000;
         uint256 TotalWeeks = BaseWeeks + ExtraWeeks;
