@@ -23,6 +23,9 @@ async function loginWithEth(goto){
         LoggedIn = true;
         document.getElementById('overlay').style.display = 'none';
         //if the goto is Purchase, go to the IDVerify.html
+        if(goto == 'Purchase'){
+            window.location.href = "IDVerify.html";
+        }
     } else { 
         alert("No ETHER Wallet available")
     }
