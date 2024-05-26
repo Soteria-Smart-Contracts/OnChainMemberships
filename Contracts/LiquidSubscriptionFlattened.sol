@@ -3,11 +3,12 @@ pragma solidity ^0.8.24;
 
 contract LiquidSubscriptionFactory{
     //map an array of deployed subscriptions for each creator
-    
+    mapping(address => address[]) public DeployedSubscriptions;
     address[] public DeployedSubscriptions;
 
     function CreateSubscription(string _MembershipName, string _MembershipTicker, MembershipType[] memory _MembershipTypes, uint256[] _DiscountSteps) public{
         address newSubscription = address(new LiquidSubscription(_MembershipName, _MembershipTicker, _MembershipTypes, _DiscountSteps));
+        DeployedSubscriptions[msg.sender].push(newSubscription);
         DeployedSubscriptions.push(newSubscription);
     }
 
