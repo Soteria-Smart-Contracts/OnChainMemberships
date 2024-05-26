@@ -17,7 +17,7 @@ contract LiquidSubscriptionFactory{
         uint256 DiscountPercentage; //In basis points
     }
 
-    function CreateSubscription(string _MembershipName, string _MembershipTicker, MembershipType[] memory _MembershipTypes, DiscountStep[] memory _DiscountSteps) public{
+    function CreateSubscription(string memory _MembershipName, string memory _MembershipTicker, MembershipType[] memory _MembershipTypes, DiscountStep[] memory _DiscountSteps) public{
         address newSubscription = address(new LiquidSubscription(_MembershipName, _MembershipTicker, _MembershipTypes, _DiscountSteps));
         DeployedSubscriptions[msg.sender].push(newSubscription);
         DeployedSubscriptions.push(newSubscription);
