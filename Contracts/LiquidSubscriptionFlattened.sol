@@ -2,7 +2,8 @@
 pragma solidity ^0.8.24;
 
 contract LiquidSubscriptionFactory{
-    //map an array of deployed 
+    //map an array of deployed subscriptions for each creator
+    
     address[] public DeployedSubscriptions;
 
     function CreateSubscription(string _MembershipName, string _MembershipTicker, MembershipType[] memory _MembershipTypes, uint256[] _DiscountSteps) public{
