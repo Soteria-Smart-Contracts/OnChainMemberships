@@ -23,7 +23,8 @@ async function loginWithEth(){
         accountarray = await web3.eth.getAccounts();
        // contract = new window.web3.eth.Contract(ABI, contractAddress, window.web3);
         account = accountarray[0];
-        console.log('Logged In')
+        console.log('helo')
+        console.log('Logged Ineeeee')
         LoggedIn = true;
         document.getElementById('overlay').style.display = 'none';
         //if the goto is Purchase, go to the IDVerify.html
