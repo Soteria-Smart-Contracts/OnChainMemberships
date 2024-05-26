@@ -118,9 +118,7 @@ contract LiquidSubscription {
         
         uint256 TimeLeft = Subscriptions[SubscriptionID].SubscriptionExpiry - block.timestamp;
         uint256 WeeksEquivalent = TimeLeft / WeekUnix;
-        //get the extra unix time that does not add up to a full week
         uint256 ExtraTime = TimeLeft % WeekUnix;
-
 
         uint256 Value = MembershipTypes[Subscriptions[SubscriptionID].MembershipType].BasePrice * WeeksEquivalent;
         Value = Value - (Value * Subscriptions[SubscriptionID].DiscountPercentage / 10000);
