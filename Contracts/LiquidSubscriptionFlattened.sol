@@ -181,6 +181,9 @@ contract LiquidSubscription {
         MembershipTypes[_MembershipType].MembershipBenefits = _NewBenefits;
     }
 
+    //allow manager to add new membership types
+    
+
     //View Functions
 
     //function get minimum time for discount
