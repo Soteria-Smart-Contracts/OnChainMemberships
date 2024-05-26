@@ -182,7 +182,18 @@ contract LiquidSubscription {
     }
 
     //allow manager to add new membership types
-    
+    function AddMembershipType(MembershipType _MembershipType) public OnlyManager{
+        require(MembershipTypes[_MembershipType] == 0, "Membership type already exists");
+        HighestTypeInt++;
+        MembershipTypes[_MembershipType] = HighestTypeInt;
+    }
+
+    //allow manager to remove membership types
+    function RemoveMembershipType(MembershipType _MembershipType) public OnlyManager{
+        require(MembershipTypes[_MembershipType] != 0, "Membership type does not exist");
+        MembershipTypes[_MembershipType] = 0;
+        
+    }
 
     //View Functions
 
