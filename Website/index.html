@@ -46,8 +46,12 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
+            height: calc(100vh - 40px); /* Adjust for navbar height */
             width: 100%;
+        }
+        .content img {
+            width: 150px; /* Adjust size as needed */
+            margin-bottom: 20px;
         }
         h1 {
             font-size: 2.5em;
@@ -133,6 +137,7 @@
     </div>
 
     <div class="content">
+        <img src="src/img/CannaShipSolo.png" alt="CannaShip Logo">
         <h1>Welcome to CannaShip</h1>
         <p>Please select an option below to get started:</p>
         <div class="btn-container">
@@ -151,6 +156,13 @@
     <script>
         function showOverlay() {
             document.getElementById('overlay').style.display = 'flex';
+        }
+
+        function connectWallet() {
+            // Placeholder for wallet connection logic
+            alert('Connecting wallet...');
+            // On successful wallet connection:
+            document.getElementById('overlay').style.display = 'none';
         }
 
         // Switch navbar options based on user's choice
@@ -175,6 +187,4 @@
         });
     </script>
 </body>
-<!-- import interaction.js from src/js -->
-<script src="src/js/interaction.js"></script>
 </html>
