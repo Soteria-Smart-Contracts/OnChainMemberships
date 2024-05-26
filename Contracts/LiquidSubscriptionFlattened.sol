@@ -175,21 +175,17 @@ contract LiquidSubscription {
     //Only manager functions
 
     //allow manager to change the price, benefits and name of a membership type, as well as add new membership types
-    function UpdateMembershipType(MembershipType _MembershipType, uint256 _NewPrice, string _NewBenefits) public OnlyManager{ //TODO:
-        require(MembershipTypes[_MembershipType] < HighestTypeInt, "Membership type is too high");
-        MembershipTypes[_MembershipType].BasePrice = _NewPrice;
-        MembershipTypes[_MembershipType].MembershipBenefits = _NewBenefits;
-    }
-
-    //allow manager to add new membership types
-    function AddMembershipType(MembershipType _MembershipType) public OnlyManager{
-        require(MembershipTypes[_MembershipType] == 0, "Membership type already exists");
-        HighestTypeInt++;
-        MembershipTypes[_MembershipType] = HighestTypeInt;
+    function UpdateMembershipTypes(MembershipType[] memory _MembershipTypes) public OnlyManager{
+        delete MembershipTypes;
+        HighestTypeInt = _MembershipTypes.length - 1;
+        for(uint256 i = 0; i < _MembershipTypes.length; i++){
+            MembershipTypes.push(_MembershipTypes[i]);
+        }
     }
 
     //allow manager to edit the discount steps
     function UpdateDiscountSteps(DiscountStep[] memory _DiscountSteps) public OnlyManager{
+        delete DiscountSteps;
         uint256 previousTime = 0;
         for(uint256 i = 0; i < _DiscountSteps.length; i++){
             require(_DiscountSteps[i].MinimumWeeks > previousTime, "Discount steps must increase");
