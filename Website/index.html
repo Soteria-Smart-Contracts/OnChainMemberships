@@ -17,7 +17,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 15px 30px;
-            background-color: #2e7d32;
+            background-color: #1b5e20;
         }
         .navbar a {
             color: white;
@@ -38,13 +38,13 @@
             font-size: 18px;
             cursor: pointer;
             border: none;
-            background-color: #4caf50;
+            background-color: #2e7d32;
             color: white;
             border-radius: 50px;
             transition: background-color 0.3s;
         }
         .btn:hover {
-            background-color: #388e3c;
+            background-color: #1b5e20;
         }
         #connectWallet {
             background-color: #66bb6a;
@@ -93,15 +93,15 @@
     <div class="navbar">
         <div class="navbar-links" id="navbarLinks">
             <a href="#" id="homeLink">Home</a>
-            <a href="#" id="createLink">Create Subscription</a>
-            <a href="#" id="purchaseLink">Purchase Subscription</a>
+            <a href="#" id="createSubscriptionLink" onclick="selectCreateSubscription()">Create Subscription</a>
+            <a href="#" id="purchaseSubscriptionLink" onclick="selectPurchaseSubscription()">Purchase Subscription</a>
         </div>
         <button id="connectWallet" onclick="connectWallet()">Connect Wallet</button>
     </div>
 
     <div class="content">
-        <button class="btn" id="purchaseBtn" onclick="showOverlay()">Purchase Subscriptions</button>
-        <button class="btn" id="createBtn" onclick="showOverlay()">Create Subscription Service</button>
+        <button class="btn" id="purchaseBtn" onclick="selectPurchaseSubscription()">Purchase Subscriptions</button>
+        <button class="btn" id="createBtn" onclick="selectCreateSubscription()">Create Subscription Service</button>
     </div>
 
     <div id="overlay">
@@ -123,8 +123,7 @@
             document.getElementById('overlay').style.display = 'none';
         }
 
-        // Switch navbar options based on user's choice
-        document.getElementById('createBtn').addEventListener('click', () => {
+        function selectCreateSubscription() {
             document.getElementById('navbarLinks').innerHTML = `
                 <a href="#">Home</a>
                 <a href="#">Create Subscription</a>
@@ -132,9 +131,9 @@
                 <a href="#">Manage Discount Steps</a>
                 <a href="#">View Subscriptions</a>
             `;
-        });
+        }
 
-        document.getElementById('purchaseBtn').addEventListener('click', () => {
+        function selectPurchaseSubscription() {
             document.getElementById('navbarLinks').innerHTML = `
                 <a href="#">Home</a>
                 <a href="#">Purchase Subscription</a>
@@ -142,7 +141,11 @@
                 <a href="#">Transfer Subscription</a>
                 <a href="#">Split Subscription</a>
             `;
-        });
+        }
+
+        // Add event listeners to the initial buttons for consistency
+        document.getElementById('createBtn').addEventListener('click', selectCreateSubscription);
+        document.getElementById('purchaseBtn').addEventListener('click', selectPurchaseSubscription);
     </script>
 </body>
 </html>
