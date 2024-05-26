@@ -140,6 +140,8 @@ contract LiquidSubscription {
         return true;
     }
 
+    //split subsc
+
     //Only manager functions
 
     //allow manager to change the price, benefits and name of a membership type, as well as add new membership types
