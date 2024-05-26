@@ -5,6 +5,8 @@ let netID;
 let goto;
 let LoggedIn;
 
+loginWithEth();
+
 
 async function loginWithEth(){
     if(LoggedIn == false){
