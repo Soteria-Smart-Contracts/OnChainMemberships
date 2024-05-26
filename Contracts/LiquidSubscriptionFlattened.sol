@@ -3,10 +3,21 @@ pragma solidity ^0.8.24;
 
 contract LiquidSubscriptionFactory{
     //map an array of deployed subscriptions for each creator
-    mapping(address => address[]) public DeployedSubscriptions;
+    mapping(address => address[]) public SubscriptionsManaged;
     address[] public DeployedSubscriptions;
 
-    function CreateSubscription(string _MembershipName, string _MembershipTicker, MembershipType[] memory _MembershipTypes, uint256[] _DiscountSteps) public{
+    struct MembershipType{
+        string MembershipTypeName;
+        string MembershipBenefits;
+        uint256 BasePrice;
+    }
+
+    struct DiscountStep{
+        uint256 MinimumWeeks; //Like 
+        uint256 DiscountPercentage; //In basis points
+    }
+
+    function CreateSubscription(string _MembershipName, string _MembershipTicker, MembershipType[] memory _MembershipTypes, DiscountStep[] memory _DiscountSteps) public{
         address newSubscription = address(new LiquidSubscription(_MembershipName, _MembershipTicker, _MembershipTypes, _DiscountSteps));
         DeployedSubscriptions[msg.sender].push(newSubscription);
         DeployedSubscriptions.push(newSubscription);
@@ -82,7 +93,7 @@ contract LiquidSubscription {
     }
 
     function PurchaseSubscription(MembershipTypes _MembershipType) public payable returns(uint256 NewSubscriptionTokenID, bool success){
-        EtherAmount = msg.value;
+        uint256 EtherAmount = msg.value;
         require(MembershipTypes[_MembershipType] <= HighestTypeInt, "Membership type is too high");
         require(Weeks >= 1, "Weeks must be greater than or equal to 1");
 
@@ -100,7 +111,7 @@ contract LiquidSubscription {
             MembershipType: _MembershipType,
             DiscountPercentage: Discount,
             SubscriptionExpiry: TimeBought,
-            TotalWeeksSubscribed: += TotalWeeks
+            TotalWeeksSubscribed: TotalWeeksSubscribed + TotalWeeks
         });
 
         Subscriptions[TokenID] = _SubscriptionInfo;
@@ -124,7 +135,7 @@ contract LiquidSubscription {
 
         uint256 Value = MembershipTypes[Subscriptions[SubscriptionID].MembershipType].BasePrice * WeeksEquivalent;
         Value = Value - (Value * Subscriptions[SubscriptionID].DiscountPercentage / 10000);
-        TotalValueIncluded = Value + msg.value;
+        uint256 TotalValueIncluded = Value + msg.value;
 
         uint256 BaseWeeks = TotalValueIncluded / MembershipTypes[_MembershipType].BasePrice;
         uint256 Discount = GetDiscountEligibility(BaseWeeks);
@@ -1457,7 +1468,7 @@ contract StandardERC721 is ERC721Enumerable{
 
 
   // public
-  function mint() public payable return(uint256 ID){
+  function mint() public payable returns(uint256 ID){
     uint256 ID = RandomMint(msg.sender);
 
     return ID;
