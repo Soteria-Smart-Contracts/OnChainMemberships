@@ -140,7 +140,7 @@ contract LiquidSubscription {
         return true;
     }
 
-    //split subsc
+    //split subscription function, allowing users to m
 
     //Only manager functions
 
