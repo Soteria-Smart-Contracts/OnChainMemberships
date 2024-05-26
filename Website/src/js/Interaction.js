@@ -6,7 +6,7 @@ let goto;
 let LoggedIn;
 
 
-async function loginWithEth(goto){
+async function loginWithEth(){
     if(LoggedIn == false){
     if(window.ethereum){
         await ethereum.request({ method: 'eth_requestAccounts' });
